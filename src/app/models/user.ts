@@ -1,6 +1,6 @@
 export interface User {
   username: string;
+  location?: string;
   password: string;
-  email?: string;
-  full_name?: string;
+  email: string;
 }

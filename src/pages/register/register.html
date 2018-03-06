@@ -1,18 +1,38 @@
-<!--
-  Generated template for the RegisterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Register</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
 
 <ion-content padding>
+  <ion-card>
 
+    <ion-card-header>
+      <h1>Register</h1>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="user.username" placeholder="Alias"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="user.email" placeholder="Email"></ion-input>
+        </ion-item>
+
+        <!--
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="user.location" placeholder="Location"></ion-input>
+        </ion-item>
+        -->
+
+        <!-- Choose one or many interests from the list (NOT DONE) -->
+
+        <ion-item>
+          <ion-input type="text" [(ngModel)]="user.password" placeholder="Password"></ion-input>
+        </ion-item>
+
+        <!-- Repeat password -->
+
+        <button (click)="register()" type="submit">Sign up</button>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
