@@ -64,4 +64,15 @@ export class MediaProvider {
     return this.http.get<Array<object>>(this.apiUrl + '/tags/file/' + id);
   }
 
+  getMediaByTag(tag){
+    return this.http.get<Array<object>>(this.apiUrl+'/tags/'+tag);
+  }
+
+  getFavourites(token){
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.get<Array<object>>(this.apiUrl+ '/favourites', settings)
+  }
+
 }

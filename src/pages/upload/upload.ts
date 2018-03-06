@@ -26,7 +26,6 @@ export class UploadPage {
   debug: string;
   imageData: string;
   url: string;
-  latLon: any;
   image = this.renderer.createElement('img');
   canvas: any;
   isCanvasEmpty = true;

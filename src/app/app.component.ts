@@ -9,7 +9,7 @@ import {UploadPage} from "../pages/upload/upload";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = UploadPage;
+  rootPage:any = FrontPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
