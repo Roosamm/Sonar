@@ -1,5 +1,13 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
+import {
+  LoadingController, NavController, NavParams,
+} from 'ionic-angular';
+import {MediaProvider} from '../../providers/media/media';
+import {HttpErrorResponse} from '@angular/common/http';
+import {Camera, CameraOptions} from '@ionic-native/camera';
+import {DomSanitizer} from '@angular/platform-browser';
+import {EditorProvider} from '../../providers/editor/editor';
+import {ShareProvider} from "../../providers/share/share";
 
 /**
  * Generated class for the UploadPage page.
@@ -8,18 +16,84 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-upload',
   templateUrl: 'upload.html',
 })
 export class UploadPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('myCanvas') canvasRef: ElementRef;
+  debug: string;
+  imageData: string;
+  url: string;
+  latLon: any;
+  image = this.renderer.createElement('img');
+  canvas: any;
+  isCanvasEmpty = true;
+
+  loading = this.loadingCtrl.create({
+    content: 'Uploading, please wait...',
+  });
+
+  constructor(
+    public navCtrl: NavController, public navParams: NavParams,
+    private camera: Camera,
+    private loadingCtrl: LoadingController,
+    private mediaProvider: MediaProvider,
+    public sanitizer: DomSanitizer,
+    public editorProvider: EditorProvider, private renderer: Renderer2) {
+  }
+
+  captureImage() {
+    const options: CameraOptions = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+    };
+    this.camera.getPicture(options).then((imageData) => {
+      this.editorProvider.setElements(this.canvas, this.image);
+      this.imageData = imageData;
+      this.editorProvider.setFile(this.imageData);
+      //if image capture success
+      this.isCanvasEmpty = false;
+    }, (err) => {
+      // canvas remains empty
+      this.isCanvasEmpty = true;
+      // Handle error
+      console.error(err);
+    });
+  }
+
+  upload(shareProvider: ShareProvider) {
+    this.loading.present();
+    // convert canvas to blob and upload
+    this.canvas.toBlob(blob => {
+      // create FormData-object
+      const formData = new FormData();
+      formData.append('file', blob);
+      // add title and description to FormData object
+      formData.append('title', 'SonarTMP');
+      formData.append('description', 'SonarTMP');
+      // send FormData object to API
+      this.mediaProvider.upload(formData, localStorage.getItem('token')).
+      subscribe(response => {
+        const fileId = response['file_id'];
+        shareProvider.fileID = fileId;
+        this.navCtrl.pop();
+      }, (error: HttpErrorResponse) => {
+        console.log(error);
+        this.loading.dismiss();
+      });
+    }, 'image/jpeg', 0.5);
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UploadPage');
+    // select element here, when it's ready
+    this.canvas = this.canvasRef.nativeElement;
   }
 
 }
