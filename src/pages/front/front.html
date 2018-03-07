@@ -1,16 +1,61 @@
-
-<ion-header>
-  <ion-nav #content [root]="rootPage"></ion-nav>
-
-  <ion-navbar>
-    <button ion-button icon-only menuToggle>
+<ion-header >
+  <ion-navbar >
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-
-    <ion-title>Sonar</ion-title>
+    <ion-title><img class="logo" src="../../assets/imgs/New_LOGO.png"/></ion-title>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <button ion-button>Log in</button>
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        {{ item }}
+      </ion-item>
+    </ion-list>
+    <ion-tabs>
+      <ion-tab [root]="rootPage" tabTitle="Culture"></ion-tab>
+      <ion-tab [root]="rootPage" tabTitle="Sport" ></ion-tab>
+      <ion-tab [root]="rootPage" tabTitle="Science" ></ion-tab>
+      <ion-tab [root]="rootPage" tabTitle="Food" ></ion-tab>
+      <ion-tab [root]="rootPage" tabTitle="Business" ></ion-tab>
+      <ion-tab [root]="rootPage" tabTitle="Animals" ></ion-tab>
+    </ion-tabs>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col class="columnEvents">
+        <ion-card>
+
+          <ion-card-header>
+            Card Header
+          </ion-card-header>
+
+          <ion-card-content>
+            <!-- Add card content here! -->
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+
+      <ion-col col class="columnPosts">
+
+        <ion-card>
+
+          <ion-card-header>
+            Card Header
+          </ion-card-header>
+
+          <ion-card-content>
+            <!-- Add card content here! -->
+          </ion-card-content>
+
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
