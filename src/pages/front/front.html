@@ -10,7 +10,7 @@
       <!-- When user is not logged -->
 
       <div *ngIf="!mediaProvider.logged">
-        <button no-lines class="logIn" ion-item (click)="login()"> Log in</button>
+        <button ion-button no-lines class="logIn" (click)="login()">Log In</button>
       </div>
 
       <!-- When user is logged -->
@@ -31,30 +31,34 @@
     <ion-row>
       <ion-col class="columnEvents">
         <ion-card>
-
           <ion-card-header>
             Card Header
           </ion-card-header>
-
           <ion-card-content>
             Card Content
             <!-- Add card content here! -->
           </ion-card-content>
-
         </ion-card>
       </ion-col>
 
-      <ion-col col-4="" class="columnPosts">
-
+      <ion-col col-4="" class="columnPosts" *ngIf="!mediaProvider.logged">
         <ion-card>
+          <ion-card-header>
+            About us
+          </ion-card-header>
+          <ion-card-content>
+            Anytime, anywhere! Find your stranger friend!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
+      <ion-col col-4="" class="columnPosts" *ngIf="mediaProvider.logged">
+        <ion-card>
           <ion-card-header>
             Card Header
           </ion-card-header>
-
           <ion-card-content>
             Card Content
-            <!-- Add card content here! -->
           </ion-card-content>
 
         </ion-card>

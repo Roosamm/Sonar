@@ -34,7 +34,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary: #FFEDC0,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -45,21 +45,27 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
+$searchbar-ios-background-color: #FFE094;
+$searchbar-ios-border-color: #FFE094;
+$searchbar-ios-border-color-focused: #FFC128;
 
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$searchbar-md-input-background-color: #FFE094;
+$searchbar-md-border-color: #FFE094;
+$searchbar-md-border-color-focused: #FFC128;
 
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
+$searchbar-wp-background-color: #FFE094;
+$searchbar-wp-border-color: #FFE094;
+$searchbar-wp-border-color-focused: #FFC128;
 
 
 

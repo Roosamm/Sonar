@@ -2,6 +2,8 @@ page-front {
 
   .columnEvents {
     .card-header {
+      text-align: center;
+      font-size: 2em;
       background: #9c79f6;
     }
     .card-content {
@@ -9,10 +11,13 @@ page-front {
     }
   }
   .columnPosts {
+    text-align: center;
     .card-header {
+      font-size: 2em;
       background: #71c1f4;
     }
     .card-content {
+      font-size: 1em;
       background: #71c1f4;
     }
   }
