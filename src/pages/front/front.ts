@@ -37,7 +37,5 @@ export class FrontPage {
 
   getItems(event) {
     this.mediaProvider.getMediaByTag(event).subscribe(data =>(this.mediaArray = data));
-
-
   }
 }

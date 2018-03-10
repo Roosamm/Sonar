@@ -21,7 +21,7 @@ export class ShareProvider {
 
   constructor(public http: HttpClient) {
 
-    this._fileID = "Blank";
+    this._fileID = "";
 
   }
 }
