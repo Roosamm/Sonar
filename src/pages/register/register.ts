@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {User} from '../../app/models/user';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -15,7 +15,8 @@ export class RegisterPage {
 
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
-    public mediaProvider: MediaProvider) {
+    public mediaProvider: MediaProvider, public menu: MenuController) {
+    menu.enable(true);
   }
 
   user: User = {
@@ -48,4 +49,14 @@ export class RegisterPage {
     this.navCtrl.setRoot(FrontPage);
   }
 
+  openMenu(evt) {
+    if (evt === "menuCategories") {
+      this.menu.enable(true, 'menuCategories');
+      this.menu.enable(false, 'userMenu');
+    } else {
+      this.menu.enable(true, 'userMenu');
+      this.menu.enable(false, 'menuCategories');
+    }
+    this.menu.toggle();
+  }
 }
