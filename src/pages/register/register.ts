@@ -40,7 +40,6 @@ export class RegisterPage {
   }
 
   public captureImage() {
-    this.navCtrl.setRoot(UploadPage);
 
   }
 
