@@ -55,6 +55,9 @@
 
         <!-- Repeat password -->
 
+        <ion-item *ngIf="photoUploaded">
+          <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
+        </ion-item>
         <ion-item>
           <button ion-button (click)="captureImage()">Upload profile picture</button>
         </ion-item>

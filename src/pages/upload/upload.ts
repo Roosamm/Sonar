@@ -74,7 +74,6 @@ export class UploadPage {
       formData.append('file', blob);
       // add title and description to FormData object
       formData.append('title', 'SonarTMP');
-      formData.append('description', 'SonarTMP');
       // send FormData object to API
       this.mediaProvider.upload(formData, localStorage.getItem('token')).
       subscribe(response => {

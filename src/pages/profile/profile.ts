@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 
 @IonicPage()
@@ -21,7 +21,8 @@ export class ProfilePage {
   private interests: Array<string>;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaProvider: MediaProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaProvider: MediaProvider, public menu: MenuController) {
+    this.menu.enable(true);
     this.getUserInformation();
   }
 
@@ -49,6 +50,17 @@ export class ProfilePage {
     this.mediaProvider.getTagByFile(this.profilePicFileID).subscribe(response =>{
       this.interests = response;
     })
+  }
+
+  openMenu(evt) {
+    if (evt === "menuCategories") {
+      this.menu.enable(true, 'menuCategories');
+      this.menu.enable(false, 'userMenu');
+    } else {
+      this.menu.enable(true, 'userMenu');
+      this.menu.enable(false, 'menuCategories');
+    }
+    this.menu.toggle();
   }
 
 }

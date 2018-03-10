@@ -75,5 +75,18 @@ export class MediaProvider {
     return this.http.get<Array<string>>(this.apiUrl+ '/favourites', settings)
   }
 
+  updateInfo(id: string, title: string, description?: string){
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+    };
+    if(description){
+      return this.http.post(this.apiUrl+'media/' + id, {
+        "title": title,
+        "decription": description
+      },settings)
+    }else{
+      return this.http.post(this.apiUrl+'/media/'+id,{"title": title},settings)
+    }
+  }
 
 }
