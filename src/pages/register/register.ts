@@ -5,6 +5,7 @@ import {User} from '../../app/models/user';
 import {HttpErrorResponse} from '@angular/common/http';
 import {FrontPage} from '../front/front';
 import {UploadPage} from '../upload/upload';
+import {ShareProvider} from "../../providers/share/share";
 
 @IonicPage()
 @Component({
@@ -13,9 +14,16 @@ import {UploadPage} from '../upload/upload';
 })
 export class RegisterPage {
 
+  photoUploaded = false;
+  photoName: string;
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
+    public shareService: ShareProvider,
     public mediaProvider: MediaProvider) {
+    if(shareService.fileID!=""){
+      this.mediaProvider.getSingleMedia(shareService.fileID).subscribe(data => (this.photoName = data['filename']));
+      this.photoUploaded = true;
+    }
   }
 
   user: User = {
@@ -30,6 +38,11 @@ export class RegisterPage {
 
 
   public register() {
+    if(this.shareService.fileID != ""){
+      this.mediaProvider.updateInfo(this.shareService.fileID,this.user.username);
+      this.mediaProvider.postTag("ProfilePic",localStorage.getItem('token'),this.shareService.fileID);
+      this.shareService.fileID = "";
+    }
     this.mediaProvider.register(this.user).subscribe(response => {
       console.log('registered');
       this.navCtrl.setRoot(FrontPage);
@@ -40,7 +53,7 @@ export class RegisterPage {
   }
 
   public captureImage() {
-    this.navCtrl.setRoot(UploadPage);
+    this.navCtrl.push(UploadPage);
 
   }
 
