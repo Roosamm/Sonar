@@ -24,8 +24,8 @@ export class ProfilePage {
 
   private email: String;
   private fullname: String;
-  private favourites: Array<object>;
-  private interests: Array<object>;
+  private favourites: Array<string>;
+  private interests: Array<string>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaProvider: MediaProvider) {
