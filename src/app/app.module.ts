@@ -19,6 +19,7 @@ import { EditorProvider } from '../providers/editor/editor';
 import {Camera} from "@ionic-native/camera";
 import {Geolocation} from '@ionic-native/geolocation';
 import { ShareProvider } from '../providers/share/share';
+import {PipesModule} from "../pipes/pipes.module";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ShareProvider } from '../providers/share/share';
     IonicModule.forRoot(MyApp),
     HttpClientModule,
     FormsModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,10 +1,11 @@
-<ion-header >
-  <ion-navbar >
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+<ion-header>
+  <ion-navbar>
+
     <ion-row>
-      <ion-title><img class="logo" src="../../assets/imgs/New_LOGO.png"/></ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
       <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
       <!-- When user is not logged -->

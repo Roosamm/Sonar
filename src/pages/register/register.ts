@@ -18,10 +18,11 @@ export class RegisterPage {
     username: '',
     email: '',
     password: '',
-  }
+  };
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
+
 
 }
