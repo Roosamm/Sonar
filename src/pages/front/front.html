@@ -3,22 +3,24 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title><img class="logo" src="../../assets/imgs/New_LOGO.png"/></ion-title>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-    <button ion-button>Log in</button>
-    <ion-list>
-      <ion-item *ngFor="let item of items">
-        {{ item }}
-      </ion-item>
-    </ion-list>
-    <ion-tabs>
-      <ion-tab [root]="rootPage" tabTitle="Culture"></ion-tab>
-      <ion-tab [root]="rootPage" tabTitle="Sport" ></ion-tab>
-      <ion-tab [root]="rootPage" tabTitle="Science" ></ion-tab>
-      <ion-tab [root]="rootPage" tabTitle="Food" ></ion-tab>
-      <ion-tab [root]="rootPage" tabTitle="Business" ></ion-tab>
-      <ion-tab [root]="rootPage" tabTitle="Animals" ></ion-tab>
-    </ion-tabs>
+    <ion-row>
+      <ion-title><img class="logo" src="../../assets/img/New_LOGO.png"/></ion-title>
+      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
+      <!-- When user is not logged -->
+
+      <div *ngIf="!mediaProvider.logged">
+        <button no-lines class="logIn" ion-item (click)="login()"> Log in</button>
+      </div>
+
+      <!-- When user is logged -->
+      <div *ngIf="mediaProvider.logged">
+        <h5> Recent tables </h5>
+        <button no-lines class="logIn" ion-item (click)="upload()"> Upload</button>
+        <button no-lines class="logout" ion-item (click)="logout()"> Log out</button>
+      </div>
+    </ion-row>
+
   </ion-navbar>
 
 </ion-header>
@@ -35,13 +37,14 @@
           </ion-card-header>
 
           <ion-card-content>
+            Card Content
             <!-- Add card content here! -->
           </ion-card-content>
 
         </ion-card>
       </ion-col>
 
-      <ion-col col class="columnPosts">
+      <ion-col col-4="" class="columnPosts">
 
         <ion-card>
 
@@ -50,6 +53,7 @@
           </ion-card-header>
 
           <ion-card-content>
+            Card Content
             <!-- Add card content here! -->
           </ion-card-content>
 

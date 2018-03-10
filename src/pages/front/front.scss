@@ -1,8 +1,19 @@
 page-front {
-  .columnEvents{
-    background: #9c79f6;
+
+  .columnEvents {
+    .card-header {
+      background: #9c79f6;
+    }
+    .card-content {
+      background: #9c79f6;
+    }
   }
-  .columnPosts{
-    background: #71c1f4;
+  .columnPosts {
+    .card-header {
+      background: #71c1f4;
+    }
+    .card-content {
+      background: #71c1f4;
+    }
   }
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
 import {User} from '../../app/models/user';
 import {MediaProvider} from '../../providers/media/media';
 import {FrontPage} from '../front/front';
@@ -20,8 +20,9 @@ export class LoginPage {
 
   user: User = {
     password: '',
-    email: '',
     username: '',
+    location: '',
+    email: ''
   };
 
   status: string;
