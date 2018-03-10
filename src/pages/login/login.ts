@@ -20,7 +20,8 @@ export class LoginPage {
 
   user: User = {
     password: '',
-    username: ''
+    email: '',
+    username: '',
   };
 
   status: string;
