@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {MenuController, NavController, NavParams} from 'ionic-angular';
 import {User} from '../../app/models/user';
 import {MediaProvider} from '../../providers/media/media';
 import {FrontPage} from '../front/front';
@@ -28,7 +28,8 @@ export class LoginPage {
 
   status: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider, public menu: MenuController) {
+    menu.enable(true);
   }
 
   login () {
@@ -58,6 +59,17 @@ export class LoginPage {
 
   public toRegister() {
     this.navCtrl.setRoot(RegisterPage);
+  }
+
+  openMenu(evt) {
+    if (evt === "menuCategories") {
+      this.menu.enable(true, 'menuCategories');
+      this.menu.enable(false, 'userMenu');
+    } else {
+      this.menu.enable(true, 'userMenu');
+      this.menu.enable(false, 'menuCategories');
+    }
+    this.menu.toggle();
   }
 
 }
