@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 
 /**
@@ -20,8 +20,9 @@ export class FrontPage {
   items: string[];
   mediaArray: Array<string>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider,  public menu: MenuController) {
     this.initializeItems();
+    menu.enable(true);
   }
 
   initializeItems() {
@@ -37,7 +38,16 @@ export class FrontPage {
 
   getItems(event) {
     this.mediaProvider.getMediaByTag(event).subscribe(data =>(this.mediaArray = data));
+  }
 
-
+  openMenu(evt) {
+    if(evt === "menuCategories"){
+      this.menu.enable(true, 'menuCategories');
+      this.menu.enable(false, 'userMenu');
+    }else{
+      this.menu.enable(true, 'userMenu');
+      this.menu.enable(false, 'menuCategories');
+    }
+    this.menu.toggle();
   }
 }

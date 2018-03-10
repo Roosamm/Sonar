@@ -15,9 +15,10 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+$toolBar_color: #ffd56e;
 
 .toolbar-background {
-  background-color: #ffd56e;
+  background-color: $toolBar_color;
 }
 
 .toolbar-title{
@@ -42,4 +43,9 @@
 
 .logIn {
   border-radius: 5px;
+  background: white;
+}
+.icon_menu{
+  box-shadow: none ;
+  color: white;
 }

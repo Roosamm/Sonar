@@ -34,7 +34,7 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary: #FFEDC0,
+  primary:    #ffd56e,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -45,29 +45,20 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-$searchbar-ios-background-color: #FFE094;
-$searchbar-ios-border-color: #FFE094;
-$searchbar-ios-border-color-focused: #FFC128;
-
-
+$searchbar-ios-input-border-radius: 5px;
+$searchbar-ios-input-height: 2.3em;
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-$searchbar-md-input-background-color: #FFE094;
-$searchbar-md-border-color: #FFE094;
-$searchbar-md-border-color-focused: #FFC128;
-
-
+$searchbar-md-input-border-radius: 5px;
+$searchbar-md-input-height: 2.3em;
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-$searchbar-wp-background-color: #FFE094;
-$searchbar-wp-border-color: #FFE094;
-$searchbar-wp-border-color-focused: #FFC128;
-
-
+$searchbar-wp-input-border-radius: 5px;
+$searchbar-wp-input-height: 2.3em;
 
 // App Theme
 // --------------------------------------------------
@@ -85,6 +76,7 @@ $searchbar-wp-border-color-focused: #FFC128;
 // http://ionicframework.com/docs/ionicons/
 
 @import "ionic.ionicons";
+
 
 
 // Fonts
