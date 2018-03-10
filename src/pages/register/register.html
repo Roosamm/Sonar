@@ -9,11 +9,11 @@
     <ion-card-content>
       <ion-list>
         <ion-item>
-          <ion-input type="text" [(ngModel)]="user.username" placeholder="Alias"></ion-input>
+          <ion-input type="text" [(ngModel)]="user.username" name="username" placeholder="Alias*" required=""></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="text" [(ngModel)]="user.email" placeholder="Email"></ion-input>
+          <ion-input type="text" [(ngModel)]="user.email" name="email" placeholder="Email"></ion-input>
         </ion-item>
 
         <!--
@@ -25,12 +25,13 @@
         <!-- Choose one or many interests from the list (NOT DONE) -->
 
         <ion-item>
-          <ion-input type="text" [(ngModel)]="user.password" placeholder="Password"></ion-input>
+          <ion-input type="text" [(ngModel)]="user.password" name="password" placeholder="Password*" required=""></ion-input>
         </ion-item>
 
         <!-- Repeat password -->
 
-        <button (click)="register()" type="submit">Sign up</button>
+        <button ion-button (click)="back()"> Back </button>
+        <button ion-button (click)="register()" type="submit">Register</button>
 
       </ion-list>
     </ion-card-content>

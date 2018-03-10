@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -24,8 +17,8 @@ export class ProfilePage {
 
   private email: String;
   private fullname: String;
-  private favourites: Array<object>;
-  private interests: Array<object>;
+  private favourites: Array<string>;
+  private interests: Array<string>;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaProvider: MediaProvider) {
