@@ -1,4 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-row>
+      <button ion-button icon-only class="icon_menu" (click)="openMenu('menuCategories')">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
+      <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
+
+      <!-- When user is not logged -->
+
+      <div *ngIf="!mediaProvider.logged">
+        <button ion-button no-lines class="logIn" (click)="login()" >Log In</button>
+      </div>
+
+      <!-- When user is logged -->
+      <div *ngIf="mediaProvider.logged">
+        <button ion-button icon-only class="icon_menu" (click)="openMenu('userMenu')">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+      </div>
+
+    </ion-row>
+  </ion-navbar>
+</ion-header>
 <ion-content padding>
   <ion-card>
 
@@ -6,14 +31,14 @@
       <h1>Register</h1>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content class="card">
       <ion-list>
         <ion-item>
-          <ion-input type="text" [(ngModel)]="user.username" name="username" placeholder="Alias*" required=""></ion-input>
+          <ion-input type="text" [(ngModel)]="user.username" placeholder="Alias*" required=""></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="text" [(ngModel)]="user.email" name="email" placeholder="Email"></ion-input>
+          <ion-input type="email" [(ngModel)]="user.email" placeholder="Email"></ion-input>
         </ion-item>
 
         <!--
@@ -25,10 +50,14 @@
         <!-- Choose one or many interests from the list (NOT DONE) -->
 
         <ion-item>
-          <ion-input type="text" [(ngModel)]="user.password" name="password" placeholder="Password*" required=""></ion-input>
+          <ion-input type="password" [(ngModel)]="user.password" placeholder="Password*" required=""></ion-input>
         </ion-item>
 
         <!-- Repeat password -->
+
+        <ion-item>
+          <button ion-button (click)="captureImage()">Upload profile picture</button>
+        </ion-item>
 
         <button ion-button (click)="back()"> Back </button>
         <button ion-button (click)="register()" type="submit">Register</button>

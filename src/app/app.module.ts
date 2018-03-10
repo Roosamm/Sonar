@@ -20,6 +20,7 @@ import {Camera} from "@ionic-native/camera";
 import {Geolocation} from '@ionic-native/geolocation';
 import { ShareProvider } from '../providers/share/share';
 import {PipesModule} from '../pipes/pipes.module';
+import {LogoutPage} from '../pages/logout/logout';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {PipesModule} from '../pipes/pipes.module';
     ProfilePage,
     UploadPage,
     PostPage,
-    RegisterPage
+    RegisterPage,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import {PipesModule} from '../pipes/pipes.module';
     ProfilePage,
     UploadPage,
     PostPage,
-    RegisterPage
+    RegisterPage,
+    LogoutPage
   ],
   providers: [
     Camera,

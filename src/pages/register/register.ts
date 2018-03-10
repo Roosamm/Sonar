@@ -4,6 +4,7 @@ import {MediaProvider} from '../../providers/media/media';
 import {User} from '../../app/models/user';
 import {HttpErrorResponse} from '@angular/common/http';
 import {FrontPage} from '../front/front';
+import {UploadPage} from '../upload/upload';
 
 @IonicPage()
 @Component({
@@ -36,6 +37,11 @@ export class RegisterPage {
     }, (error: HttpErrorResponse) => {
       console.log(error.error.message);
     });
+  }
+
+  public captureImage() {
+    this.navCtrl.setRoot(UploadPage);
+
   }
 
   public back() {

@@ -1,8 +1,7 @@
 <ion-header>
   <ion-navbar>
-
     <ion-row>
-      <button ion-button menuToggle>
+      <button ion-button icon-only class="icon_menu" (click)="openMenu('menuCategories')">
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
@@ -12,23 +11,21 @@
       <!-- When user is not logged -->
 
       <div *ngIf="!mediaProvider.logged">
-        <button ion-button no-lines class="logIn" (click)="login()">Log In</button>
-      </div>
+          <button ion-button no-lines class="logIn" (click)="login()" >Log In</button>
+        </div>
 
-      <!-- When user is logged -->
+        <!-- When user is logged -->
       <div *ngIf="mediaProvider.logged">
-        <h5> Recent tables </h5>
-        <button no-lines class="logIn" ion-item (click)="upload()"> Upload</button>
-        <button no-lines class="logout" ion-item (click)="logout()"> Log out</button>
+        <button ion-button icon-only class="icon_menu" (click)="openMenu('userMenu')">
+          <ion-icon name="contact"></ion-icon>
+        </button>
       </div>
+
     </ion-row>
-
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
-
   <ion-grid>
     <ion-row>
       <ion-col class="columnEvents">
