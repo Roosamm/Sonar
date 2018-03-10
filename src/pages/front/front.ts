@@ -54,4 +54,8 @@ export class FrontPage {
     this.menu.toggle();
   }
 
+  login() {
+    this.navCtrl.setRoot(LoginPage);
+  }
+
 }
