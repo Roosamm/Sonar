@@ -8,14 +8,15 @@ import {UploadPage} from "../pages/upload/upload";
 import {RegisterPage} from "../pages/register/register";
 import {ProfilePage} from "../pages/profile/profile";
 import {PostPage} from "../pages/post/post";
-import {LogoutPage} from "../pages/logout/logout";
+import {LoginPage} from '../pages/login/login';
+import {LogoutPage} from '../pages/logout/logout';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
 
-  rootPage:any = RegisterPage;
+  rootPage:any = FrontPage;
 
 
   @ViewChild(Nav) nav: Nav;

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
+import {LoginPage} from '../login/login';
+import {LogoutPage} from '../logout/logout';
+import {UploadPage} from '../upload/upload';
 
 /**
  * Generated class for the FrontPage page.
@@ -41,13 +44,14 @@ export class FrontPage {
   }
 
   openMenu(evt) {
-    if(evt === "menuCategories"){
+    if (evt === "menuCategories") {
       this.menu.enable(true, 'menuCategories');
       this.menu.enable(false, 'userMenu');
-    }else{
+    } else {
       this.menu.enable(true, 'userMenu');
       this.menu.enable(false, 'menuCategories');
     }
     this.menu.toggle();
   }
+
 }
