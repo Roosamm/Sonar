@@ -22,6 +22,8 @@ export class FrontPage {
   searchQuery: string = '';
   items: string[];
   mediaArray: Array<string>;
+  sonarArray: Array<string>;
+  resultArray: Array<string>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider,  public menu: MenuController) {
     this.initializeItems();
@@ -40,8 +42,17 @@ export class FrontPage {
   }
 
   getItems(event) {
+    this.resultArray = [];
     this.mediaProvider.getMediaByTag(event).subscribe(data =>(this.mediaArray = data));
+    this.mediaProvider.getMediaByTag("Sonar").subscribe(stuff=>(this.sonarArray = stuff));
 
+    for(let str in this.mediaArray){
+      for(let tmp in this.sonarArray){
+        if(str['tag'].equals(tmp['tag'])){
+          this.resultArray.push(tmp);
+        }
+      }
+    }
   }
 
   openMenu(evt) {
