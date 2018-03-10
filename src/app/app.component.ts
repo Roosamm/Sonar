@@ -4,14 +4,19 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {FrontPage} from "../pages/front/front";
+import {UploadPage} from "../pages/upload/upload";
+import {RegisterPage} from "../pages/register/register";
+import {ProfilePage} from "../pages/profile/profile";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+
+  rootPage:any = RegisterPage;
+
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = FrontPage;
 
   pages: Array<{ title: string, component: any }>;
 
