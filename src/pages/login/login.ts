@@ -4,6 +4,7 @@ import {User} from '../../app/models/user';
 import {MediaProvider} from '../../providers/media/media';
 import {FrontPage} from '../front/front';
 import {HttpErrorResponse} from '@angular/common/http';
+import {RegisterPage} from '../register/register';
 
 /**
  * Generated class for the LoginPage page.
@@ -53,6 +54,10 @@ export class LoginPage {
         console.log(error);
       });
     }
+  }
+
+  public toRegister() {
+    this.navCtrl.setRoot(RegisterPage);
   }
 
 }

@@ -7,13 +7,15 @@ import {FrontPage} from "../pages/front/front";
 import {UploadPage} from "../pages/upload/upload";
 import {RegisterPage} from "../pages/register/register";
 import {ProfilePage} from "../pages/profile/profile";
+import {LoginPage} from '../pages/login/login';
+import {LogoutPage} from '../pages/logout/logout';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
 
-  rootPage:any = RegisterPage;
+  rootPage:any = FrontPage;
 
   @ViewChild(Nav) nav: Nav;
 

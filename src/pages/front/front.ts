@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
+import {LoginPage} from '../login/login';
+import {LogoutPage} from '../logout/logout';
+import {UploadPage} from '../upload/upload';
 
 /**
  * Generated class for the FrontPage page.
@@ -37,7 +40,18 @@ export class FrontPage {
 
   getItems(event) {
     this.mediaProvider.getMediaByTag(event).subscribe(data =>(this.mediaArray = data));
-
-
   }
+
+  public upload() {
+    this.navCtrl.setRoot(UploadPage);
+  }
+
+  public login() {
+    this.navCtrl.setRoot(LoginPage);
+  }
+
+  public logout() {
+    this.navCtrl.setRoot(LogoutPage);
+  }
+
 }
