@@ -75,4 +75,5 @@ export class MediaProvider {
     return this.http.get<Array<object>>(this.apiUrl+ '/favourites', settings)
   }
 
+
 }

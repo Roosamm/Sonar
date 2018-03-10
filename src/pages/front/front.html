@@ -9,12 +9,12 @@
 
       <!-- When user is not logged -->
 
-      <div><!-- *ngIf="!mediaProvider.isLoggedIn"-->
+      <div *ngIf="!mediaProvider.logged">
         <button no-lines class="logIn" ion-item (click)="login()"> Log in</button>
       </div>
 
       <!-- When user is logged -->
-      <div *ngIf="mediaProvider.isLoggedIn">
+      <div *ngIf="mediaProvider.logged">
         <h5> Recent tables </h5>
         <button no-lines class="logIn" ion-item (click)="upload()"> Upload</button>
         <button no-lines class="logout" ion-item (click)="logout()"> Log out</button>
