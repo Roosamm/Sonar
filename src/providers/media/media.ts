@@ -13,6 +13,13 @@ export class MediaProvider {
 
   logged = false;
 
+  title: string;
+  location: string;
+  info: string;
+  time: string;
+  cost: number;
+  capasity: number;
+
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
 
@@ -29,6 +36,11 @@ export class MediaProvider {
 
   register(user) {
     return this.http.post(this.apiUrl + '/users', user);
+  }
+
+  //not sure if this works!
+  post(post) {
+    return this.http.post(this.mediaUrl + '/post', post);
   }
 
   getUserData(token) {

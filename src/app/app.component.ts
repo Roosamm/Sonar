@@ -16,7 +16,7 @@ import {LogoutPage} from '../pages/logout/logout';
 })
 export class MyApp {
 
-  rootPage:any = LoginPage;
+  rootPage:any = RegisterPage;
 
 
   @ViewChild(Nav) nav: Nav;
