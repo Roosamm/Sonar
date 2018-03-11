@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {topBar} from "../../app/topBar";
+import {ShareProvider} from "../../providers/share/share";
 
 /**
  * Generated class for the FrontPage page.
@@ -30,11 +31,11 @@ export class FrontPage {
   public tb: topBar;
 
 
-  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController, public shareService: ShareProvider) {
     this.getEventFeed();
     this.getPostFeed();
     this.listOfPages = 'Events';
-    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
   }
 
   getEventFeed(){
@@ -49,6 +50,7 @@ export class FrontPage {
             }
           }
         }
+        this.shareService.eventArray = this.eventArray;
       });
     })
   }
@@ -63,6 +65,7 @@ export class FrontPage {
             }
           }
         }
+        this.shareService.postArray = this.postArray;
       });
     });
   }

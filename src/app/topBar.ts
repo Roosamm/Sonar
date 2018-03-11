@@ -2,6 +2,7 @@ import {MenuController, NavController} from "ionic-angular";
 import {MediaProvider} from "../providers/media/media";
 import {LoginPage} from "../pages/login/login";
 import {Injectable} from "@angular/core";
+import {ShareProvider} from "../providers/share/share";
 
 @Injectable()
 export class topBar {
@@ -16,13 +17,14 @@ export class topBar {
   public postArray: Array<string> = [];
   searchQuery: string;
 
-  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController, public shareService: ShareProvider) {
     menu.enable(true);
   }
 
   //final search results are in eventArray and postArray
   getItems(event) {
-    this.mediaProvider.getMediaByTag(event).subscribe(data => {
+    let query = event.target.value;
+    this.mediaProvider.getMediaByTag(query).subscribe(data => {
       this.mediaArray = data;
       this.mediaProvider.getMediaByTag("Sonar").subscribe(stuff => {
         this.sonarArray = stuff;
@@ -36,7 +38,7 @@ export class topBar {
         this.mediaProvider.getMediaByTag("event").subscribe(data => {
           this.allEvents = data;
           this.mediaProvider.getMediaByTag("post").subscribe(data => {
-            this.postArray = data;
+            this.allPosts = data;
             for (let res of this.resultArray) {
               for (let evt of this.allEvents) {
                 if (res['filename'] == evt['filename']) {
@@ -49,6 +51,8 @@ export class topBar {
                 }
               }
             }
+            this.shareService.postArray = this.postArray;
+            this.shareService.eventArray = this.eventArray;
           });
         });
       });

@@ -52,7 +52,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-col class="columnEvents" *ngFor="let evt of eventArray">
+    <ion-col class="columnEvents" *ngFor="let evt of shareService.eventArray">
       <ion-grid>
         <ion-row>
           <ion-col col-12 col-sm-6 offset-sm-3>
@@ -83,7 +83,7 @@
 
     <div [ngSwitch]="listOfPages">
       <ion-list *ngSwitchCase="'Events'">
-        <ion-col class="columnEvents" *ngFor="let evt of eventArray">
+        <ion-col class="columnEvents" *ngFor="let evt of shareService.eventArray">
           <ion-grid>
             <ion-row>
               <ion-col col-12 col-sm-6 offset-sm-3>
@@ -99,7 +99,7 @@
       </ion-list>
 
       <ion-list *ngSwitchCase="'News'">
-        <ion-col class="columnEvents" *ngFor="let post of postArray">
+        <ion-col class="columnEvents" *ngFor="let post of shareService.postArray">
           <ion-grid>
             <ion-row>
               <ion-col col-12 col-sm-6 offset-sm-3>
