@@ -46,14 +46,15 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
-    <ion-col class="columnEvents">
+    <ion-col class="columnEvents" *ngFor="let evt of eventArray">
       <ion-card>
         <ion-card-header>
-          Card Header
+          {{evt.title}}
         </ion-card-header>
         <ion-card-content>
-          Card Content
-          <!-- Add card content here! -->
+          <img [src] ="mediaProvider.mediaUrl + (evt.filename | thumbnail:'small')">
+          <b>Description</b><br>
+          {{evt.description}}
         </ion-card-content>
       </ion-card>
     </ion-col>
@@ -75,32 +76,33 @@
 
     <div [ngSwitch]="listOfPages">
       <ion-list *ngSwitchCase="'Events'">
-        <ion-col class="columnEvents">
-        <ion-card>
-          <ion-card-header>
-            Card Header
-          </ion-card-header>
-          <ion-card-content>
-            Card Content
-            <!-- Add card content here! -->
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+        <ion-col class="columnEvents" *ngFor="let evt of eventArray">
+          <ion-card>
+            <ion-card-header>
+              {{evt.title}}
+            </ion-card-header>
+            <ion-card-content>
+              <img [src] ="mediaProvider.mediaUrl + (evt.filename | thumbnail:'medium')">
+              <b>Description</b><br>
+              {{evt.description}}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
       </ion-list>
       <ion-list *ngSwitchCase="'News'">
-        <ion-col class="columnPosts">
+        <ion-col class="columnPosts" *ngFor="let post of postArray">
         <ion-card>
           <ion-card-header>
-            Card Header
+            {{post.title}
           </ion-card-header>
           <ion-card-content>
-            Card Content
-            <!-- Add card content here! -->
+            <img [src] ="mediaProvider.mediaUrl + (post.filename | thumbnail:'medium')">
+            <b>Description</b><br>
+            {{post.description}}
           </ion-card-content>
         </ion-card>
       </ion-col>
       </ion-list>
     </div>
   </div>
-
 </ion-content>
