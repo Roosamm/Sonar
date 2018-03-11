@@ -4,12 +4,12 @@
       <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('menuCategories')">
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
+      <ion-title (click)="tb.redirectToFront()"><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
       <!-- When user is not logged -->
 
       <div *ngIf="!mediaProvider.logged">
-        <button ion-button no-lines class="logIn" (click)="tb.login()">Log In</button>
+        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin(LoginPage)">Log In</button>
         </div>
 
         <!-- When user is logged -->

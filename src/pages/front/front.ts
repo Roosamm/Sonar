@@ -4,12 +4,7 @@ import {MediaProvider} from '../../providers/media/media';
 import {topBar} from "../../app/topBar";
 import {ShareProvider} from "../../providers/share/share";
 
-/**
- * Generated class for the FrontPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({

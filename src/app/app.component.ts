@@ -13,7 +13,9 @@ import {LogoutPage} from '../pages/logout/logout';
 })
 export class MyApp {
 
-  rootPage: any = FrontPage;
+  rootPage:any = FrontPage;
+
+  searchInput = '';
 
   @ViewChild(Nav) nav: Nav;
 

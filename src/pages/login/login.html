@@ -4,11 +4,10 @@
       <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('menuCategories')">
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
+      <ion-title (click)="tb.redirectToFront()"><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
-      <!-- When user is not logged -->
       <div>
-        <button ion-button no-lines class="logIn" (click)="tb.login()">Log In</button>
+        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
       </div>
       <div>
         <button ion-button icon-only class="icon_menu" (click)="tb.toggle()" *ngIf="!tb.toggled">
@@ -26,7 +25,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-sm-6 offset-sm-3>
-        <ion-title><p><i>Welcome again!</i></p></ion-title>
+        <ion-title class="welcome"><p><i>Welcome again!</i></p></ion-title>
         <form (submit)="login()">
           <ion-list>
 
