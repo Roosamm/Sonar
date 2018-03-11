@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
-import {LoginPage} from '../login/login';
+import {topBar} from "../../app/topBar";
 
 /**
  * Generated class for the FrontPage page.
@@ -17,69 +17,22 @@ import {LoginPage} from '../login/login';
 })
 export class FrontPage {
 
-  items: string[];
-  mediaArray: Array<string>;
   sonarArray: Array<string>;
-  resultArray: Array<string>;
   public eventArray: Array<string> = [];
   public postArray: Array<string> = [];
   allEvents: Array<string>;
   allPosts: Array<string>;
   listOfPages: string = "Events";
-  public toggled: boolean = false;
+  public tb: topBar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider,  public menu: MenuController) {
-    this.initializeItems();
-    menu.enable(true);
+
+  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController) {
     this.getEventFeed();
     this.getPostFeed();
     this.listOfPages = 'Events';
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
   }
 
-  initializeItems() {
-    this.items = [
-      'culture',
-      'sport',
-      'science',
-      'food',
-      'business',
-      'animals'
-    ];
-  }
-//final search results are in eventArray and postArray
-  getItems(event) {
-    this.mediaProvider.getMediaByTag(event).subscribe(data =>{
-      this.mediaArray = data;
-      this.mediaProvider.getMediaByTag("Sonar").subscribe(stuff=>{
-        this.sonarArray = stuff;
-        for(let str of this.mediaArray){
-          for(let tmp of this.sonarArray){
-            if(str['filename'] == tmp['filename']){
-              this.resultArray.push(tmp);
-            }
-          }
-        }
-        this.mediaProvider.getMediaByTag("event").subscribe(data=>{
-          this.allEvents = data;
-          this.mediaProvider.getMediaByTag("post").subscribe(data => {
-            this.postArray = data;
-            for(let res of this.resultArray){
-              for(let evt of this.allEvents){
-                if(res['filename'] == evt['filename']){
-                  this.eventArray.push(evt)
-                }
-              }
-              for(let post of this.allPosts){
-                if(res['filename'] == post['filename']){
-                  this.postArray.push(post)
-                }
-              }
-            }
-          });
-        });
-      });
-    });
-  }
 
   getEventFeed(){
     this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>{
@@ -110,6 +63,7 @@ export class FrontPage {
       });
     });
   }
+<<<<<<< HEAD
 
   openMenu(evt) {
     if (evt === "menuCategories") {
@@ -138,4 +92,6 @@ export class FrontPage {
   private onCancel(): void {
     this.toggled = false;
   }
+=======
+>>>>>>> 75049fd45aae33ae5cb0908a5f8d9362733a7f1f
 }

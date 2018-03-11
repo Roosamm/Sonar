@@ -7,7 +7,6 @@ import {FrontPage} from "../pages/front/front";
 import {ProfilePage} from "../pages/profile/profile";
 import {PostPage} from "../pages/post/post";
 import {LogoutPage} from '../pages/logout/logout';
-import {RegisterPage} from '../pages/register/register';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,13 +17,10 @@ export class MyApp {
 
   searchInput = '';
 
-
   @ViewChild(Nav) nav: Nav;
-
 
   pages: Array<{ title: string, component: any }>;
   userProfMenu: Array<{ title: string, component: any }>;
-
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
     this.initializeApp();

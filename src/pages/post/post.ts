@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {FrontPage} from '../front/front';
 import {ProfilePage} from '../profile/profile';
-import {HttpErrorResponse} from '@angular/common/http';
 import {UploadPage} from '../upload/upload';
 import {Posts} from '../../app/models/posts';
 import {ShareProvider} from "../../providers/share/share";
+import {topBar} from "../../app/topBar";
 
 @IonicPage()
 @Component({
@@ -17,9 +17,11 @@ export class PostPage {
 
 
   public toggled: boolean = false;
+  public tb: topBar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public mediaProvider: MediaProvider, public shareService: ShareProvider) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public mediaProvider: MediaProvider, public shareService: ShareProvider) {
     menu.enable(true);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
   }
 
   post: Posts = {
@@ -30,21 +32,6 @@ export class PostPage {
     capasity: '',
     interests: ''
   };
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PostPage');
-  }
-
-  openMenu(evt) {
-    if (evt === "menuCategories") {
-      this.menu.enable(true, 'menuCategories');
-      this.menu.enable(false, 'userMenu');
-    } else {
-      this.menu.enable(true, 'userMenu');
-      this.menu.enable(false, 'menuCategories');
-    }
-    this.menu.toggle();
-  }
 
   public postIt() {
     if(this.shareService.fileID != ""){
@@ -66,14 +53,5 @@ export class PostPage {
   public cancel() {
       this.navCtrl.setRoot(FrontPage);
     }
-
-  //hidden search bar
-  private toggle(): void {
-    this.toggled = true;
-  }
-
-  private onCancel(): void {
-    this.toggled = false;
-  }
 
 }
