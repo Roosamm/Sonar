@@ -1,11 +1,21 @@
 page-post {
 
-  .card {
+  $button-ios-background-color-activated: 34 ADFB;
+  $button-wp-background-color-activated: 34 ADFB;
+  $button-md-background-color-activated: 34 ADFB;
+
+  .style {
     ion-item {
       background: #33ccff;
     }
     background: #33ccff;
   }
+
+  .postBtn {
+    border-radius: 5px;
+    background: white;
+  }
+
   .input {
     color: white;
   }

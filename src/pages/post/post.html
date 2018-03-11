@@ -33,12 +33,12 @@
 
 <ion-content padding>
 
-<ion-card-content class="card">
-  <ion-card>
+<ion-card-content >
+  <ion-card class="style">
     <ion-list radio-group> <!--[(ngModel)]="PostIt"-->
 
       <ion-item>
-        <ion-label>Make an post</ion-label>
+        <ion-label>Make a post</ion-label>
       </ion-item>
 
       <!-- Seen to events and posts -->
@@ -81,12 +81,12 @@
           <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
       </ion-item>
       <ion-item>
-        <button ion-button (click)="captureImage()">Upload picture</button>
+        <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
       </ion-item>
 
       <div class="buttons">
-        <button ion-button (click)="cancel()"> Cancel </button>
-        <button ion-button (click)="postIt()" type="submit">Post</button>
+        <button ion-button class="postBtn" (click)="cancel()"> Cancel </button>
+        <button ion-button class="postBtn" (click)="postIt()" type="submit">Post</button>
       </div>
 
     </ion-list>
