@@ -51,7 +51,7 @@ export class PostPage {
   }
 
   public cancel() {
-      this.navCtrl.setRoot(ProfilePage);
+      this.navCtrl.setRoot(FrontPage);
     }
 
 }
