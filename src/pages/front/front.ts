@@ -126,6 +126,10 @@ export class FrontPage {
     this.navCtrl.setRoot(LoginPage);
   }
 
+  toFront() {
+    this.navCtrl.setRoot(FrontPage);
+  }
+
 //hidden search bar
   private toggle(): void {
     this.toggled = true;

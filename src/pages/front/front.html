@@ -4,7 +4,9 @@
       <button ion-button icon-only class="icon_menu" (click)="openMenu('menuCategories')">
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
+      <button ion-button icon-only (click)="toFront()" clear>
+        <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
+      </button>
 
       <!-- When user is not logged -->
 
@@ -44,7 +46,8 @@
           About us
         </ion-card-header>
         <ion-card-content>
-          Anytime, anywhere! Find your stranger friend!
+          Anytime, anywhere! Find your stranger friend! Sonar is an app where you can find other people with the same interests as you.
+          Create and join events, and post about your passions!
         </ion-card-content>
       </ion-card>
         </ion-col>

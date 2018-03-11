@@ -14,7 +14,7 @@ import {RegisterPage} from '../pages/register/register';
 })
 export class MyApp {
 
-  rootPage:any = PostPage;
+  rootPage:any = FrontPage;
 
   searchInput = '';
 
