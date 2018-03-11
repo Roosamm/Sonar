@@ -36,21 +36,21 @@ export class ProfilePage {
       this.userID = response['user_id'];
       this.email = response['email'];
       this.fullname = response['full_name'];
-    });
-    this.mediaProvider.getMediaByTag("SonarProfile").subscribe(response=>{
-      for(let media of response){
-        if(media['user_id']==this.userID){
-          this.profilePicFilename = media['filename'];
-          this.profilePicFileID = media['file_id'];
+      this.mediaProvider.getMediaByTag("SonarProfile").subscribe(response=>{
+        for(let media of response){
+          if(media['user_id']==this.userID){
+            this.profilePicFilename = media['filename'];
+            this.profilePicFileID = media['file_id'];
+          }
+          this.mediaProvider.getFavourites(localStorage.getItem('token')).subscribe(response=>{
+            this.favourites = response;
+            this.mediaProvider.getTagByFile(this.profilePicFileID).subscribe(response =>{
+              this.interests = response;
+            })
+          });
         }
-      }
+      });
     });
-    this.mediaProvider.getFavourites(localStorage.getItem('token')).subscribe(response=>{
-      this.favourites = response;
-    });
-    this.mediaProvider.getTagByFile(this.profilePicFileID).subscribe(response =>{
-      this.interests = response;
-    })
   }
 
   openMenu(evt) {

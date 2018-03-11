@@ -31,11 +31,6 @@ export class MediaProvider {
     return this.http.post(this.apiUrl + '/users', user);
   }
 
-  //not sure if this works!
-  postIt(post) {
-    return this.http.post(this.mediaUrl + '/post', post);
-  }
-
   getUserData(token) {
     const settings = {
       headers: new HttpHeaders().set('x-access-token', token),
