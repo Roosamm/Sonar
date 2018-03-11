@@ -27,6 +27,7 @@ export class LoginPage {
   };
 
   status: string;
+  public toggled: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider, public menu: MenuController) {
     menu.enable(true);
@@ -70,6 +71,15 @@ export class LoginPage {
       this.menu.enable(false, 'menuCategories');
     }
     this.menu.toggle();
+  }
+
+  //hidden search bar
+  private toggle(): void {
+    this.toggled = true;
+  }
+
+  private onCancel(): void {
+    this.toggled = false;
   }
 
 }

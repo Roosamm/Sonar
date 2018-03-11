@@ -15,6 +15,8 @@ import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular
 })
 export class PostPage {
 
+  public toggled: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
     menu.enable(true);
   }
@@ -32,6 +34,15 @@ export class PostPage {
       this.menu.enable(false, 'menuCategories');
     }
     this.menu.toggle();
+  }
+
+  //hidden search bar
+  private toggle(): void {
+    this.toggled = true;
+  }
+
+  private onCancel(): void {
+    this.toggled = false;
   }
 
 }

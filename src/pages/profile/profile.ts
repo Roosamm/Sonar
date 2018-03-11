@@ -19,6 +19,7 @@ export class ProfilePage {
   private fullname: String;
   private favourites: Array<string>;
   private interests: Array<string>;
+  public toggled: boolean = false;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mediaProvider: MediaProvider, public menu: MenuController) {
@@ -61,6 +62,15 @@ export class ProfilePage {
       this.menu.enable(false, 'menuCategories');
     }
     this.menu.toggle();
+  }
+
+  //hidden search bar
+  private toggle(): void {
+    this.toggled = true;
+  }
+
+  private onCancel(): void {
+    this.toggled = false;
   }
 
 }

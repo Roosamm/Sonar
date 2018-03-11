@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <ion-row>
@@ -6,8 +5,6 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
-
-      <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
 
       <!-- When user is not logged -->
 
@@ -20,6 +17,14 @@
         <button ion-button icon-only class="icon_menu" (click)="openMenu('userMenu')">
           <ion-icon name="contact"></ion-icon>
         </button>
+      </div>
+
+      <div>
+        <button ion-button icon-only class="icon_menu" (click)="toggle()" *ngIf="!toggled">
+          <ion-icon name="search"></ion-icon>
+        </button>
+        <ion-searchbar *ngIf="toggled" [animated]="true" (ionInput)="getItems($event)" (ionClear)="onCancel()"
+                       (ionCancel)="onCancel()"></ion-searchbar>
       </div>
 
     </ion-row>
