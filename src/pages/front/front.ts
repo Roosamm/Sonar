@@ -18,13 +18,13 @@ import {LoginPage} from '../login/login';
 export class FrontPage {
 
   items: string[];
-  mediaArray: Array<string>;
-  sonarArray: Array<string>;
-  resultArray: Array<string>;
+  mediaArray: Array<string>= [];
+  sonarArray: Array<string>= [];
+  resultArray: Array<string>= [];
   public eventArray: Array<string> = [];
   public postArray: Array<string> = [];
-  allEvents: Array<string>;
-  allPosts: Array<string>;
+  allEvents: Array<string>= [];
+  allPosts: Array<string>= [];
   listOfPages: string = "Events";
   public toggled: boolean = false;
 
