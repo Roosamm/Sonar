@@ -42,11 +42,13 @@ export class RegisterPage {
 
 
   public register() {
+    /*
     if(this.shareService.fileID != ""){
       this.mediaProvider.updateInfo(this.shareService.fileID,this.user.username);
       this.mediaProvider.postTag("ProfilePic",localStorage.getItem('token'),this.shareService.fileID);
       this.shareService.fileID = "";
     }
+    */
     this.mediaProvider.register(this.user).subscribe(response => {
       console.log('registered');
       this.navCtrl.setRoot(FrontPage);

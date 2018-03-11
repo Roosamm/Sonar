@@ -6,6 +6,7 @@ import {ProfilePage} from '../profile/profile';
 import {HttpErrorResponse} from '@angular/common/http';
 import {UploadPage} from '../upload/upload';
 import {Posts} from '../../app/models/posts';
+import {ShareProvider} from "../../providers/share/share";
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class PostPage {
 
   public toggled: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public mediaProvider: MediaProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public mediaProvider: MediaProvider, public shareService: ShareProvider) {
     menu.enable(true);
   }
 
@@ -46,19 +47,16 @@ export class PostPage {
   }
 
   public postIt() {
-    /*
     if(this.shareService.fileID != ""){
-      this.mediaProvider.updateInfo(this.shareService.fileID,this.user.username);
-      this.mediaProvider.postTag("ProfilePic",localStorage.getItem('token'),this.shareService.fileID);
-      this.shareService.fileID = "";
-    }*/
-    this.mediaProvider.postIt(this.post).subscribe(response => {
-      console.log('posted');
-      this.navCtrl.setRoot(FrontPage);
-      this.mediaProvider.logged = true;
-    }, (error: HttpErrorResponse) => {
-      console.log(error.error.message);
-    });
+      this.mediaProvider.updateInfo(this.shareService.fileID,this.post.title,this.post.info).subscribe(response => {
+        this.mediaProvider.postTag(this.post.interests,localStorage.getItem('token'),this.shareService.fileID).subscribe(resp => {
+          this.shareService.fileID = "";
+          console.log('posted');
+          this.navCtrl.setRoot(FrontPage);
+          this.mediaProvider.logged = true;
+        })
+      });
+    }
   }
 
   public captureImage() {
