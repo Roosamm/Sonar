@@ -16,6 +16,8 @@ export class RegisterPage {
 
   photoUploaded = false;
   photoName: string;
+  public toggled: boolean = false;
+
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     public menu: MenuController,
@@ -71,5 +73,14 @@ export class RegisterPage {
       this.menu.enable(false, 'menuCategories');
     }
     this.menu.toggle();
+  }
+
+  //hidden search bar
+  private toggle(): void {
+    this.toggled = true;
+  }
+
+  private onCancel(): void {
+    this.toggled = false;
   }
 }

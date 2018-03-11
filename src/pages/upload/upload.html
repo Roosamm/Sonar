@@ -1,9 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Upload</ion-title>
+    <ion-row>
+      <button ion-button icon-only class="icon_menu" (click)="openMenu('menuCategories')">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
+
+      <!-- When user is not logged -->
+
+      <div *ngIf="!mediaProvider.logged">
+        <button ion-button no-lines class="logIn" (click)="login()">Log In</button>
+      </div>
+
+      <!-- When user is logged -->
+      <div *ngIf="mediaProvider.logged">
+        <button ion-button icon-only class="icon_menu" (click)="openMenu('userMenu')">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+      </div>
+
+      <div>
+        <button ion-button icon-only class="icon_menu" (click)="toggle()" *ngIf="!toggled">
+          <ion-icon name="search"></ion-icon>
+        </button>
+        <ion-searchbar *ngIf="toggled" [animated]="true" (ionInput)="getItems($event)" (ionClear)="onCancel()"
+                       (ionCancel)="onCancel()"></ion-searchbar>
+      </div>
+
+    </ion-row>
   </ion-navbar>
 </ion-header>
 

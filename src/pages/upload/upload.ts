@@ -1,7 +1,5 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
-import {
-  LoadingController, NavController, NavParams,
-} from 'ionic-angular';
+import {LoadingController, NavController, NavParams,} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Camera, CameraOptions} from '@ionic-native/camera';
@@ -29,6 +27,8 @@ export class UploadPage {
   image = this.renderer.createElement('img');
   canvas: any;
   isCanvasEmpty = true;
+  public toggled: boolean = false;
+
 
   loading = this.loadingCtrl.create({
     content: 'Uploading, please wait...',
@@ -92,6 +92,15 @@ export class UploadPage {
     console.log('ionViewDidLoad UploadPage');
     // select element here, when it's ready
     this.canvas = this.canvasRef.nativeElement;
+  }
+
+  //hidden search bar
+  private toggle(): void {
+    this.toggled = true;
+  }
+
+  private onCancel(): void {
+    this.toggled = false;
   }
 
 }

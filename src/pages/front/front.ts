@@ -34,7 +34,6 @@ export class FrontPage {
     this.getEventFeed();
     this.getPostFeed();
     this.listOfPages = 'Events';
-    this.toggled = false;
   }
 
   initializeItems() {

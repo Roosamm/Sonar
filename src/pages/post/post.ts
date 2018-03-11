@@ -18,6 +18,8 @@ export class PostPage {
     menu.enable(true);
   }
 
+  public toggled: boolean = false;
+
   post: Posts = {
     title: '',
     info: '',
@@ -62,7 +64,16 @@ export class PostPage {
   }
 
   public cancel() {
-    this.navCtrl.setRoot(ProfilePage);
+      this.navCtrl.setRoot(ProfilePage);
+    }
+
+  //hidden search bar
+  private toggle(): void {
+    this.toggled = true;
+  }
+
+  private onCancel(): void {
+    this.toggled = false;
   }
 
 }
