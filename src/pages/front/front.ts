@@ -22,10 +22,14 @@ export class FrontPage {
   mediaArray: Array<string>;
   sonarArray: Array<string>;
   resultArray: Array<string>;
+  listOfPages: string = "Events";
+  public toggled: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider,  public menu: MenuController) {
     this.initializeItems();
     menu.enable(true);
+    this.listOfPages = 'Events';
+    this.toggled = false;
   }
 
   initializeItems() {
@@ -68,4 +72,12 @@ export class FrontPage {
     this.navCtrl.setRoot(LoginPage);
   }
 
+//hidden search bar
+  private toggle(): void {
+    this.toggled = true;
+  }
+
+  private onCancel(): void {
+    this.toggled = false;
+  }
 }
