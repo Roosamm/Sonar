@@ -29,7 +29,7 @@ export class RegisterPage {
       this.photoUploaded = true;
     }
     menu.enable(true);
-    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
   }
 
   user: User = {

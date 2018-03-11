@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 import {topBar} from "../../app/topBar";
+import {ShareProvider} from "../../providers/share/share";
 
 @IonicPage()
 @Component({
@@ -24,9 +25,9 @@ export class ProfilePage {
   public tb: topBar;
 
 
-  constructor(private mediaProvider: MediaProvider, public menu: MenuController, public navCtrl: NavController) {
+  constructor(private mediaProvider: MediaProvider, public menu: MenuController, public navCtrl: NavController, public shareService: ShareProvider) {
     this.menu.enable(true);
-    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
     this.getUserInformation();
   }
 

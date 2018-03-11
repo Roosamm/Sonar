@@ -6,6 +6,7 @@ import {FrontPage} from '../front/front';
 import {HttpErrorResponse} from '@angular/common/http';
 import {RegisterPage} from '../register/register';
 import {topBar} from "../../app/topBar";
+import {ShareProvider} from "../../providers/share/share";
 
 /**
  * Generated class for the LoginPage page.
@@ -31,9 +32,9 @@ export class LoginPage {
   public toggled: boolean = false;
   public tb: topBar;
 
-  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController, public shareService: ShareProvider) {
     menu.enable(true);
-    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
   }
 
   login () {

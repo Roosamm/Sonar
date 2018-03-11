@@ -41,8 +41,9 @@ export class UploadPage {
               private loadingCtrl: LoadingController,
               private mediaProvider: MediaProvider,
               public sanitizer: DomSanitizer,
+              public shareService: ShareProvider,
               public editorProvider: EditorProvider, private renderer: Renderer2, public menu: MenuController,) {
-    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
   }
 
   captureImage() {
