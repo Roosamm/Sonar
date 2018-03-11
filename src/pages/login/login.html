@@ -9,13 +9,6 @@
       <div>
         <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
       </div>
-      <div>
-        <button ion-button icon-only class="icon_menu" (click)="tb.toggle()" *ngIf="!tb.toggled">
-          <ion-icon name="search"></ion-icon>
-        </button>
-        <ion-searchbar *ngIf="tb.toggled" [animated]="true" (ionInput)="tb.getItems($event)" (ionClear)="tb.onCancel()"
-                       (ionCancel)="tb.onCancel()"></ion-searchbar>
-      </div>
     </ion-row>
   </ion-navbar>
 </ion-header>
@@ -40,7 +33,6 @@
             </ion-item>
 
           </ion-list>
-
             <button type="submit" ion-button color="primary" block>Sign In</button>
             <button type="submit" ion-button (click)="toRegister()" color="primary" block>Register</button>
 
