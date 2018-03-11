@@ -21,8 +21,8 @@ export class FrontPage {
   mediaArray: Array<string>;
   sonarArray: Array<string>;
   resultArray: Array<string>;
-  eventArray: Array<string>;
-  postArray: Array<string>;
+  public eventArray: Array<string> = [];
+  public postArray: Array<string> = [];
   allEvents: Array<string>;
   allPosts: Array<string>;
   listOfPages: string = "Events";
@@ -48,57 +48,67 @@ export class FrontPage {
   }
 //final search results are in eventArray and postArray
   getItems(event) {
-    //empty data holders and fetch new stuff
-    this.resultArray = this.sonarArray = this.mediaArray = this.eventArray = this.postArray = this.allPosts = this.allEvents = [];
-    this.mediaProvider.getMediaByTag(event).subscribe(data =>(this.mediaArray = data));
-    this.mediaProvider.getMediaByTag("Sonar").subscribe(stuff=>(this.sonarArray = stuff));
-
-    for(let str in this.mediaArray){
-      for(let tmp in this.sonarArray){
-        if(str['filename'].equals(tmp['filename'])){
-          this.resultArray.push(tmp);
+    this.mediaProvider.getMediaByTag(event).subscribe(data =>{
+      this.mediaArray = data;
+      this.mediaProvider.getMediaByTag("Sonar").subscribe(stuff=>{
+        this.sonarArray = stuff;
+        for(let str of this.mediaArray){
+          for(let tmp of this.sonarArray){
+            if(str.filename == tmp.filename){
+              this.resultArray.push(tmp);
+            }
+          }
         }
-      }
-    }
-
-    this.mediaProvider.getMediaByTag("event").subscribe(data=>(this.allEvents = data));
-    this.mediaProvider.getMediaByTag("post").subscribe(data =>(this.postArray = data));
-
-    for(let sonar in this.sonarArray){
-      for(let evt in this.allEvents){
-        if(sonar['filename'].equals(evt['filename'])){
-          this.eventArray.push(evt)
-        }
-      }
-      for(let post in this.allPosts){
-        if(sonar['filename'].equals(post['filename'])){
-          this.postArray.push(post)
-        }
-      }
-    }
+        this.mediaProvider.getMediaByTag("event").subscribe(data=>{
+          this.allEvents = data;
+          this.mediaProvider.getMediaByTag("post").subscribe(data => {
+            this.postArray = data;
+            for(let res of this.resultArray){
+              for(let evt of this.allEvents){
+                if(res.filename == evt.filename){
+                  this.eventArray.push(evt)
+                }
+              }
+              for(let post of this.allPosts){
+                if(res.filename == post.filename){
+                  this.postArray.push(post)
+                }
+              }
+            }
+          });
+        });
+      });
+    });
   }
 
   getEventFeed(){
-    this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>(this.sonarArray = data));
-    this.mediaProvider.getMediaByTag("event").subscribe(data =>(this.allEvents = data));
-    for(let sonar in this.sonarArray){
-      for(let evt in this.allEvents){
-        if(sonar['filename'].equals(evt['filename'])){
-          this.eventArray.push(evt);
+    this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>{
+      this.sonarArray = data;
+      this.mediaProvider.getMediaByTag("event").subscribe(data => {
+        this.allEvents = data;
+        for (let sonar of this.sonarArray) {
+          for (let evt of this.allEvents) {
+            if (sonar.filename == evt.filename) {
+              this.eventArray.push(evt);
+            }
+          }
         }
-      }
-    }
+      });
+    })
   }
   getPostFeed(){
-    this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>(this.sonarArray = data));
-    this.mediaProvider.getMediaByTag("post").subscribe(data =>(this.allPosts = data));
-    for(let sonar in this.sonarArray){
-      for(let post in this.allPosts){
-        if(sonar['filename'].equals(post['filename'])){
-          this.eventArray.push(post);
+    this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>{
+      this.sonarArray = data;
+      this.mediaProvider.getMediaByTag("post").subscribe(data =>{this.allPosts = data;
+        for(let sonar of this.sonarArray){
+          for(let post of this.allPosts){
+            if(sonar.filename == post.filename){
+              this.postArray.push(post);
+            }
+          }
         }
-      }
-    }
+      });
+    });
   }
 
   openMenu(evt) {
