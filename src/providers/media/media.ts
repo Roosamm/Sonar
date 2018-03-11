@@ -24,7 +24,7 @@ export class MediaProvider {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
     };
 
-    return this.http.post(this.apiUrl + '/login', user, settings);
+    return this.http.post(this.apiUrl + '/redirectToLogin', user, settings);
   }
 
   register(user) {

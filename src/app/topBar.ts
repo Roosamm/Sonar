@@ -2,6 +2,7 @@ import {MenuController, NavController} from "ionic-angular";
 import {MediaProvider} from "../providers/media/media";
 import {LoginPage} from "../pages/login/login";
 import {Injectable} from "@angular/core";
+import {FrontPage} from "../pages/front/front";
 
 @Injectable()
 export class topBar {
@@ -67,9 +68,13 @@ export class topBar {
     this.menu.toggle();
   }
 
-  //login button reference
-  login() {
+  //redirectToLogin button reference
+  redirectToLogin() {
     this.navCtrl.setRoot(LoginPage);
+  }
+
+  redirectToFront() {
+    this.navCtrl.setRoot(FrontPage);
   }
 
 //open/hidden search bar
