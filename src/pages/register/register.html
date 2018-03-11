@@ -31,8 +31,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-card col-6="">
 
+  <ion-card col-12 col-sm-6 offset-sm-3>
     <ion-card-header>
       <h1>Register</h1>
     </ion-card-header>
@@ -65,14 +65,11 @@
         <ion-item *ngIf="photoUploaded">
           <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
         </ion-item>
-        <ion-item>
-          <button ion-button class="registerBut" (click)="captureImage()">Upload profile picture</button>
-        </ion-item>
 
-        <div class="buttons">
+        <ion-item class="buttons">
           <button ion-button class="registerBut" (click)="back()"> Back</button>
-          <button ion-button class="registerBut" (click)="register()" type="submit">Register</button>
-        </div>
+          <button ion-button item-right="" class="registerBut" (click)="register()" type="submit">Register</button>
+        </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>

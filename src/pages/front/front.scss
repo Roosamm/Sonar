@@ -1,24 +1,53 @@
 page-front {
 
   .columnEvents {
-    .card-header {
+    text-shadow: 2px 2px 2px #222222;
+
+    ion-card {
+      position: relative;
       text-align: center;
-      font-size: 2em;
-      background: #9c79f6;
+      padding: 0 0 0 0;
     }
-    .card-content {
-      background: #9c79f6;
+
+    .card-title {
+      position: absolute;
+      top: 36%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
     }
+
+    .card-subtitle {
+      font-size: 1.0em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+    .grid {
+      padding: 0 0 0 0;
+    }
+    col {
+      padding: 0 0 0 0;
+    }
+
+  }
+
+
   }
   .columnPosts {
     text-align: center;
     .card-header {
       font-size: 2em;
-      background: #71c1f4;
+      background: #33ccff;
     }
     .card-content {
       font-size: 1em;
-      background: #71c1f4;
+      background: #33ccff;
     }
+
   }
-}
+
+
+
