@@ -9,7 +9,7 @@
       <!-- When user is not logged -->
 
       <div *ngIf="!mediaProvider.logged">
-        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin(LoginPage)">Log In</button>
+        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
         </div>
 
         <!-- When user is logged -->

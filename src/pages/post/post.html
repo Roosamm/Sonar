@@ -18,13 +18,6 @@
           <ion-icon name="contact"></ion-icon>
         </button>
       </div>
-      <div>
-        <button ion-button icon-only class="icon_menu" (click)="tb.toggle()" *ngIf="!tb.toggled">
-          <ion-icon name="search"></ion-icon>
-        </button>
-        <ion-searchbar *ngIf="tb.toggled" [animated]="true" (ionInput)="tb.getItems($event)" (ionClear)="tb.onCancel()"
-                       (ionCancel)="tb.onCancel()"></ion-searchbar>
-      </div>
 
     </ion-row>
   </ion-navbar>
