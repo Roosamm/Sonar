@@ -13,13 +13,6 @@ export class MediaProvider {
 
   logged = false;
 
-  title: string;
-  location: string;
-  info: string;
-  time: string;
-  cost: number;
-  capasity: number;
-
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
 
@@ -39,7 +32,7 @@ export class MediaProvider {
   }
 
   //not sure if this works!
-  post(post) {
+  postIt(post) {
     return this.http.post(this.mediaUrl + '/post', post);
   }
 

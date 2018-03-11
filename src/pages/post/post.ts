@@ -5,6 +5,7 @@ import {FrontPage} from '../front/front';
 import {ProfilePage} from '../profile/profile';
 import {HttpErrorResponse} from '@angular/common/http';
 import {UploadPage} from '../upload/upload';
+import {Posts} from '../../app/models/posts';
 
 @IonicPage()
 @Component({
@@ -17,9 +18,8 @@ export class PostPage {
     menu.enable(true);
   }
 
-  post: PostIt = {
+  post: Posts = {
     title: '',
-    location: '',
     info: '',
     time: '',
     cost: '',
@@ -41,14 +41,14 @@ export class PostPage {
     this.menu.toggle();
   }
 
-  public post() {
+  public postIt() {
     /*
     if(this.shareService.fileID != ""){
       this.mediaProvider.updateInfo(this.shareService.fileID,this.user.username);
       this.mediaProvider.postTag("ProfilePic",localStorage.getItem('token'),this.shareService.fileID);
       this.shareService.fileID = "";
     }*/
-    this.mediaProvider.post(this.post).subscribe(response => {
+    this.mediaProvider.postIt(this.post).subscribe(response => {
       console.log('posted');
       this.navCtrl.setRoot(FrontPage);
       this.mediaProvider.logged = true;

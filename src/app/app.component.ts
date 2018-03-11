@@ -7,6 +7,7 @@ import {FrontPage} from "../pages/front/front";
 import {ProfilePage} from "../pages/profile/profile";
 import {PostPage} from "../pages/post/post";
 import {LogoutPage} from '../pages/logout/logout';
+import {RegisterPage} from '../pages/register/register';
 
 @Component({
   templateUrl: 'app.html'

@@ -10,7 +10,7 @@
       <button ion-button icon-only class="icon_menu" (click)="openMenu('menuCategories')">
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
+      <ion-title><img class="logo" src="../../assets/img/New_LOGO.png"/></ion-title>
 
       <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
 
@@ -30,7 +30,7 @@
 
       <ion-card-content>
         <ion-card>
-          <ion-list radio-group <!--[(ngModel)]="PostIt"-->>
+          <ion-list radio-group> <!--[(ngModel)]="PostIt"-->
 
             <ion-item>
               <ion-label>Event</ion-label>
@@ -43,35 +43,44 @@
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" [(ngModel)]="post.location" placeholder="Location"></ion-input>
+              <ion-input type="text" [(ngModel)]="post.info" placeholder="Info"></ion-input>
             </ion-item>
 
             <ion-item>
-              <ion-input type="text" [(ngModel)]="post.info" placeholder="Info"></ion-input>
+              <ion-label>Interest</ion-label>
+              <ion-select [(ngModel)]="interests">
+                <ion-option>Culture</ion-option>
+                <ion-option>Sports</ion-option>
+                <ion-option>Science</ion-option>
+                <ion-option>Food</ion-option>
+                <ion-option>Business</ion-option>
+                <ion-option>Animals</ion-option>
+              </ion-select>
             </ion-item>
 
             <!-- Seen only to events  -->
             <ion-item>
-              <ion-radio type="text" value="" [(ngModel)]="post.time" [disabled]="Time" placeholder="Time" ></ion-radio>
+              <ion-radio type="text" <!--value=""--> [(ngModel)]="post.time" [disabled]="Time" placeholder="Time" ></ion-radio>
             </ion-item>
 
             <ion-item>
-              <ion-radio type="number" value="" [(ngModel)]="post.capasity" [disabled]="Cost" placeholder="Cost" ></ion-radio>
+              <ion-radio type="text" [(ngModel)]="post.cost" [disabled]="isHidden" placeholder="Cost" ></ion-radio>
             </ion-item>
 
             <ion-item>
-              <ion-radio type="number" value="" [(ngModel)]="post.capasity" [disabled]="Capasity" placeholder="Capasity" ></ion-radio>
+              <ion-radio type="text" [(ngModel)]="post.capasity" [disabled]="isHidden" placeholder="Capasity" ></ion-radio>
             </ion-item>
 
+          <!--
             <ion-item *ngIf="photoUploaded">
               <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
-            </ion-item>
+            </ion-item> -->
             <ion-item>
               <button ion-button (click)="captureImage()">Upload picture</button>
             </ion-item>
 
             <button ion-button (click)="cancel()"> Cancel </button>
-            <button ion-button (click)="post()" type="submit">Post</button>
+            <button ion-button (click)="postIt()" type="submit">Post</button>
 
           </ion-list>
         </ion-card>
