@@ -23,7 +23,6 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
   <ion-grid padding>
     <ion-row>
@@ -101,11 +100,12 @@
                 <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
               </ion-item>
 
-              <div class="buttons">
+              <ion-item class="buttons">
                 <button ion-button class="postBtn" (click)="cancel()"> Cancel</button>
-                <button ion-button class="postBtn" (click)="postIt()" [disabled]="!photoUploaded" type="submit">Post
+                <button ion-button class="postBtn" item-right="" (click)="postIt()" [disabled]="!photoUploaded"
+                        type="submit">Post
                 </button>
-              </div>
+              </ion-item>
             </div>
 
             <div *ngSwitchCase="'post'">
@@ -165,11 +165,12 @@
                 <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
               </ion-item>
 
-              <div class="buttons">
+              <ion-item class="buttons">
                 <button ion-button class="postBtn" (click)="cancel()"> Cancel</button>
-                <button ion-button class="postBtn" (click)="postIt()" [disabled]="!photoUploaded" type="submit">Post
+                <button ion-button class="postBtn" item-right="" (click)="postIt()" [disabled]="!photoUploaded"
+                        type="submit">Post
                 </button>
-              </div>
+              </ion-item>
             </div>
           </div>
         </ion-card>
