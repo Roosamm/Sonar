@@ -8,11 +8,11 @@ import {FrontPage} from "../pages/front/front";
 export class topBar {
   public toggled: boolean = false;
 
-  mediaArray: Array<string>;
-  sonarArray: Array<string>;
-  resultArray: Array<string>;
-  allEvents: Array<string>;
-  allPosts: Array<string>;
+  mediaArray: Array<string>= [];
+  sonarArray: Array<string>= [];
+  resultArray: Array<string>= [];
+  allEvents: Array<string>= [];
+  allPosts: Array<string>= [];
   public eventArray: Array<string> = [];
   public postArray: Array<string> = [];
   searchQuery: string;

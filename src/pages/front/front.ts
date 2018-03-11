@@ -2,13 +2,9 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {topBar} from "../../app/topBar";
+import {LoginPage} from '../login/login';
 
-/**
- * Generated class for the FrontPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -17,11 +13,15 @@ import {topBar} from "../../app/topBar";
 })
 export class FrontPage {
 
-  sonarArray: Array<string>;
+
+  items: string[];
+  mediaArray: Array<string>= [];
+  sonarArray: Array<string>= [];
+  resultArray: Array<string>= [];
   public eventArray: Array<string> = [];
   public postArray: Array<string> = [];
-  allEvents: Array<string>;
-  allPosts: Array<string>;
+  allEvents: Array<string>= [];
+  allPosts: Array<string>= [];
   listOfPages: string = "Events";
   public tb: topBar;
 
@@ -32,7 +32,6 @@ export class FrontPage {
     this.listOfPages = 'Events';
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
   }
-
 
   getEventFeed(){
     this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>{
