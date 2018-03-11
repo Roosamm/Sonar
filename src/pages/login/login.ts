@@ -40,12 +40,11 @@ export class LoginPage {
   login () {
     this.mediaProvider.login(this.user).
     subscribe(response => {
-      console.log(response['token']);
       localStorage.setItem('token', response['token']);
       this.navCtrl.setRoot(FrontPage);
       this.mediaProvider.logged = true;
     }, (error: HttpErrorResponse) => {
-      console.log(error.error.message);
+      console.log(error.error);
       this.status = error.error.message;
     });
   }
