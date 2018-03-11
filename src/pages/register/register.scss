@@ -1,9 +1,24 @@
 page-register {
 
+  $button-ios-background-color-activated: 34 ADFB;
+  $button-wp-background-color-activated: 34 ADFB;
+  $button-md-background-color-activated: 34 ADFB;
+
   .card {
     ion-item {
       background: #71c1f4;
     }
     background: #71c1f4;
+  }
+  .registerBut {
+    border-radius: 5px;
+    background: white;
+  }
+  .input {
+    color: white;
+  }
+  .buttons {
+    padding-left: 70%;
+
   }
 }

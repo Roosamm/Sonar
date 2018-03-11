@@ -25,7 +25,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-card>
+  <ion-card col-6="">
 
     <ion-card-header>
       <h1>Register</h1>
@@ -34,11 +34,11 @@
     <ion-card-content class="card">
       <ion-list>
         <ion-item>
-          <ion-input type="text" [(ngModel)]="user.username" placeholder="Alias*" required=""></ion-input>
+          <ion-input class="input" type="text" [(ngModel)]="user.username" placeholder="Alias*" required=""></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-input type="email" [(ngModel)]="user.email" placeholder="Email"></ion-input>
+          <ion-input class="input" type="email" [(ngModel)]="user.email" placeholder="Email"></ion-input>
         </ion-item>
 
         <!--
@@ -50,7 +50,8 @@
         <!-- Choose one or many interests from the list (NOT DONE) -->
 
         <ion-item>
-          <ion-input type="password" [(ngModel)]="user.password" placeholder="Password*" required=""></ion-input>
+          <ion-input class="input" type="password" [(ngModel)]="user.password" placeholder="Password*"
+                     required=""></ion-input>
         </ion-item>
 
         <!-- Repeat password -->
@@ -59,12 +60,13 @@
           <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
         </ion-item>
         <ion-item>
-          <button ion-button (click)="captureImage()">Upload profile picture</button>
+          <button ion-button class="registerBut" (click)="captureImage()">Upload profile picture</button>
         </ion-item>
 
-        <button ion-button (click)="back()"> Back </button>
-        <button ion-button (click)="register()" type="submit">Register</button>
-
+        <div class="buttons">
+          <button ion-button class="registerBut" (click)="back()"> Back</button>
+          <button ion-button class="registerBut" (click)="register()" type="submit">Register</button>
+        </div>
       </ion-list>
     </ion-card-content>
   </ion-card>

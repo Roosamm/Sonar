@@ -6,12 +6,20 @@
       </button>
       <ion-title><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
-      <ion-searchbar (ionInput)="getItems($event)" ></ion-searchbar>
+
+      <div>
+        <button ion-button icon-only class="icon_menu" (click)="toggle()" *ngIf="!toggled">
+          <ion-icon name="search"></ion-icon>
+        </button>
+        <ion-searchbar *ngIf="toggled" [animated]="true" (ionInput)="getItems($event)" (ionClear)="onCancel()"
+                       (ionCancel)="onCancel()"></ion-searchbar>
+
+      </div>
 
       <!-- When user is not logged -->
 
       <div *ngIf="!mediaProvider.logged">
-          <button ion-button no-lines class="logIn" (click)="login()" >Log In</button>
+        <button ion-button no-lines class="logIn" (click)="login()">Log In</button>
         </div>
 
         <!-- When user is logged -->
@@ -25,10 +33,51 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col class="columnEvents">
+  <!-- Content for NOT logged in user -->
+
+  <div *ngIf="!mediaProvider.logged">
+    <ion-col class="columnPosts">
+      <ion-card>
+        <ion-card-header>
+          About us
+        </ion-card-header>
+        <ion-card-content>
+          Anytime, anywhere! Find your stranger friend!
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col class="columnEvents">
+      <ion-card>
+        <ion-card-header>
+          Card Header
+        </ion-card-header>
+        <ion-card-content>
+          Card Content
+          <!-- Add card content here! -->
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </div>
+
+
+  <!-- Content for logged in user -->
+  <div *ngIf="mediaProvider.logged">
+    <div padding>
+      <ion-segment [(ngModel)]="listOfPages">
+        <ion-segment-button value="Events">
+          Events
+        </ion-segment-button>
+        <ion-segment-button value="News">
+          News
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div [ngSwitch]="listOfPages">
+      <ion-list *ngSwitchCase="'Events'">
+        <ion-col class="columnEvents">
         <ion-card>
           <ion-card-header>
             Card Header
@@ -39,30 +88,21 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
-
-      <ion-col col-4="" class="columnPosts" *ngIf="!mediaProvider.logged">
-        <ion-card>
-          <ion-card-header>
-            About us
-          </ion-card-header>
-          <ion-card-content>
-            Anytime, anywhere! Find your stranger friend!
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col col-4="" class="columnPosts" *ngIf="mediaProvider.logged">
+      </ion-list>
+      <ion-list *ngSwitchCase="'News'">
+        <ion-col class="columnPosts">
         <ion-card>
           <ion-card-header>
             Card Header
           </ion-card-header>
           <ion-card-content>
             Card Content
+            <!-- Add card content here! -->
           </ion-card-content>
-
         </ion-card>
-
       </ion-col>
-    </ion-row>
-  </ion-grid>
+      </ion-list>
+    </div>
+  </div>
+
 </ion-content>
