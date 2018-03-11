@@ -13,11 +13,15 @@ import {LoginPage} from '../login/login';
 })
 export class FrontPage {
 
-  sonarArray: Array<string>;
+
+  items: string[];
+  mediaArray: Array<string>= [];
+  sonarArray: Array<string>= [];
+  resultArray: Array<string>= [];
   public eventArray: Array<string> = [];
   public postArray: Array<string> = [];
-  allEvents: Array<string>;
-  allPosts: Array<string>;
+  allEvents: Array<string>= [];
+  allPosts: Array<string>= [];
   listOfPages: string = "Events";
   public tb: topBar;
 
@@ -28,7 +32,6 @@ export class FrontPage {
     this.listOfPages = 'Events';
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
   }
-
 
   getEventFeed(){
     this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>{

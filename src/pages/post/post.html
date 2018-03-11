@@ -85,8 +85,10 @@
       </ion-item>
 
       <div class="buttons">
+
         <button ion-button class="postBtn" (click)="cancel()"> Cancel </button>
-        <button ion-button class="postBtn" (click)="postIt()" type="submit">Post</button>
+        <button ion-button class="postBtn" (click)="postIt()" [disabled]="!photoUploaded" type="submit">Post</button>
+
       </div>
 
     </ion-list>
