@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
+import {topBar} from "../../app/topBar";
 
 @IonicPage()
 @Component({
@@ -20,10 +21,12 @@ export class ProfilePage {
   private favourites: Array<string>;
   private interests: Array<string>;
   public toggled: boolean = false;
+  public tb: topBar;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private mediaProvider: MediaProvider, public menu: MenuController) {
+  constructor(private mediaProvider: MediaProvider, public menu: MenuController, public navCtrl: NavController) {
     this.menu.enable(true);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
     this.getUserInformation();
   }
 
@@ -52,25 +55,4 @@ export class ProfilePage {
       });
     });
   }
-
-  openMenu(evt) {
-    if (evt === "menuCategories") {
-      this.menu.enable(true, 'menuCategories');
-      this.menu.enable(false, 'userMenu');
-    } else {
-      this.menu.enable(true, 'userMenu');
-      this.menu.enable(false, 'menuCategories');
-    }
-    this.menu.toggle();
-  }
-
-  //hidden search bar
-  private toggle(): void {
-    this.toggled = true;
-  }
-
-  private onCancel(): void {
-    this.toggled = false;
-  }
-
 }

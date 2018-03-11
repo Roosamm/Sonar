@@ -18,7 +18,7 @@ import {FormsModule} from "@angular/forms";
 import {EditorProvider} from '../providers/editor/editor';
 import {Camera} from "@ionic-native/camera";
 import {Geolocation} from '@ionic-native/geolocation';
-import { ShareProvider } from '../providers/share/share';
+import {ShareProvider} from '../providers/share/share';
 import {PipesModule} from '../pipes/pipes.module';
 import {LogoutPage} from '../pages/logout/logout';
 
@@ -62,7 +62,7 @@ import {LogoutPage} from '../pages/logout/logout';
     EditorProvider,
     File,
     Geolocation,
-    ShareProvider
+    ShareProvider,
   ]
 })
 export class AppModule {}
