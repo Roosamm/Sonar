@@ -25,67 +25,155 @@
 
 
 <ion-content padding>
+  <ion-grid padding>
+    <ion-row>
+      <ion-col col-12 col-sm-6 offset-sm-3>
+        <ion-card class="style">
+          <div padding>
+            <ion-segment [(ngModel)]="postOrEvent">
+              <ion-segment-button value="event">
+                Event
+              </ion-segment-button>
+              <ion-segment-button value="post">
+                Post
+              </ion-segment-button>
+            </ion-segment>
+          </div>
 
-<ion-card-content >
-  <ion-card class="style">
-    <ion-list radio-group> <!--[(ngModel)]="PostIt"-->
+          <div [ngSwitch]="postOrEvent" padding>
+            <div *ngSwitchCase="'event'">
+              <ion-input type="text" [(ngModel)]="post.title" name="title" placeholder="Title" required></ion-input>
+              <ion-input type="text" [(ngModel)]="post.info" name="info" placeholder="Info" required></ion-input>
+              <ion-input type="datetime-local" [(ngModel)]="post.time" placeholder="Time"></ion-input>
+              <ion-input type="text" [(ngModel)]="post.cost" name="cost" placeholder="Cost"
+                         ngDefaultControl></ion-input>
+              <ion-input type="number" [(ngModel)]="post.capasity" name="capasity" placeholder="Capasity"
+                         ngDefaultControl></ion-input>
+              <ion-label>Choose the category</ion-label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Clture</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Sports</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Animals</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Science</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Food</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Business</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <ion-item *ngIf="photoUploaded">
+                <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
+              </ion-item>
+              <ion-item>
+                <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
+              </ion-item>
 
-      <ion-item>
-        <ion-label>Make a post</ion-label>
-      </ion-item>
+              <div class="buttons">
+                <button ion-button class="postBtn" (click)="cancel()"> Cancel</button>
+                <button ion-button class="postBtn" (click)="postIt()" [disabled]="!photoUploaded" type="submit">Post
+                </button>
+              </div>
+            </div>
 
-      <!-- Seen to events and posts -->
-      <ion-item>
-        <ion-input type="text" [(ngModel)]="post.title" name="title" placeholder="Title" required></ion-input>
-      </ion-item>
+            <div *ngSwitchCase="'post'">
+              <ion-input type="text" [(ngModel)]="post.title" name="title" placeholder="Title" required></ion-input>
+              <ion-input type="text" [(ngModel)]="post.info" name="info" placeholder="Info" required></ion-input>
 
-      <ion-item>
-        <ion-input type="text" [(ngModel)]="post.info" name="info" placeholder="Info" required></ion-input>
-      </ion-item>
+              <ion-label>Choose the category</ion-label>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Clture</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Sports</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Animals</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Science</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Food</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Business</ion-label>
+                      <ion-checkbox color="secondary"></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
 
-      <ion-item>
-        <ion-label>Choose the category</ion-label>
-        <ion-select [(ngModel)]="post.interests" name="interests" placeholder="Interest" required>
-          <ion-option>Culture</ion-option>
-          <ion-option>Sports</ion-option>
-          <ion-option>Science</ion-option>
-          <ion-option>Food</ion-option>
-          <ion-option>Business</ion-option>
-          <ion-option>Animals</ion-option>
-        </ion-select>
-      </ion-item>
+              <ion-item *ngIf="photoUploaded">
+                <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
+              </ion-item>
+              <ion-item>
+                <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
+              </ion-item>
 
-      <!-- Seen only to events
-      <ion-item [hidden]="isHidden">
-        <ion-radio type="text" [(ngModel)]="post.time" name="time" placeholder="Time" ngDefaultControl></ion-radio>
-      </ion-item>
-
-      <ion-item [hidden]="isHidden">
-        <ion-radio type="text" [(ngModel)]="post.cost" name="cost" placeholder="Cost" ngDefaultControl></ion-radio>
-      </ion-item>
-
-      <ion-item [hidden]="isHidden">
-        <ion-radio type="text" [(ngModel)]="post.capasity" name="capasity" placeholder="Capasity" ngDefaultControl></ion-radio>
-      </ion-item>
-      -->
-
-
-      <ion-item *ngIf="photoUploaded">
-          <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
-      </ion-item>
-      <ion-item>
-        <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
-      </ion-item>
-
-      <div class="buttons">
-
-        <button ion-button class="postBtn" (click)="cancel()"> Cancel </button>
-        <button ion-button class="postBtn" (click)="postIt()" [disabled]="!photoUploaded" type="submit">Post</button>
-
-      </div>
-
-    </ion-list>
-  </ion-card>
-</ion-card-content>
-
+              <div class="buttons">
+                <button ion-button class="postBtn" (click)="cancel()"> Cancel</button>
+                <button ion-button class="postBtn" (click)="postIt()" [disabled]="!photoUploaded" type="submit">Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
