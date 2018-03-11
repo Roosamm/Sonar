@@ -1,11 +1,12 @@
 import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
-import {LoadingController, NavController, NavParams,} from 'ionic-angular';
+import {LoadingController, MenuController, NavController,} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {DomSanitizer} from '@angular/platform-browser';
 import {EditorProvider} from '../../providers/editor/editor';
 import {ShareProvider} from "../../providers/share/share";
+import {topBar} from "../../app/topBar";
 
 /**
  * Generated class for the UploadPage page.
@@ -28,19 +29,20 @@ export class UploadPage {
   canvas: any;
   isCanvasEmpty = true;
   public toggled: boolean = false;
+  public tb: topBar;
 
 
   loading = this.loadingCtrl.create({
     content: 'Uploading, please wait...',
   });
 
-  constructor(
-    public navCtrl: NavController, public navParams: NavParams,
-    private camera: Camera,
-    private loadingCtrl: LoadingController,
-    private mediaProvider: MediaProvider,
-    public sanitizer: DomSanitizer,
-    public editorProvider: EditorProvider, private renderer: Renderer2) {
+  constructor(public navCtrl: NavController,
+              private camera: Camera,
+              private loadingCtrl: LoadingController,
+              private mediaProvider: MediaProvider,
+              public sanitizer: DomSanitizer,
+              public editorProvider: EditorProvider, private renderer: Renderer2, public menu: MenuController,) {
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
   }
 
   captureImage() {
@@ -86,21 +88,6 @@ export class UploadPage {
       });
     }, 'image/jpeg', 0.5);
 
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UploadPage');
-    // select element here, when it's ready
-    this.canvas = this.canvasRef.nativeElement;
-  }
-
-  //hidden search bar
-  private toggle(): void {
-    this.toggled = true;
-  }
-
-  private onCancel(): void {
-    this.toggled = false;
   }
 
 }

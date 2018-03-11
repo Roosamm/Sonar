@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
-import {MenuController, NavController, NavParams} from 'ionic-angular';
+import {MenuController, NavController} from 'ionic-angular';
 import {User} from '../../app/models/user';
 import {MediaProvider} from '../../providers/media/media';
 import {FrontPage} from '../front/front';
 import {HttpErrorResponse} from '@angular/common/http';
 import {RegisterPage} from '../register/register';
+import {topBar} from "../../app/topBar";
 
 /**
  * Generated class for the LoginPage page.
@@ -28,9 +29,11 @@ export class LoginPage {
 
   status: string;
   public toggled: boolean = false;
+  public tb: topBar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController) {
     menu.enable(true);
+    this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu);
   }
 
   login () {
@@ -60,26 +63,6 @@ export class LoginPage {
 
   public toRegister() {
     this.navCtrl.setRoot(RegisterPage);
-  }
-
-  openMenu(evt) {
-    if (evt === "menuCategories") {
-      this.menu.enable(true, 'menuCategories');
-      this.menu.enable(false, 'userMenu');
-    } else {
-      this.menu.enable(true, 'userMenu');
-      this.menu.enable(false, 'menuCategories');
-    }
-    this.menu.toggle();
-  }
-
-  //hidden search bar
-  private toggle(): void {
-    this.toggled = true;
-  }
-
-  private onCancel(): void {
-    this.toggled = false;
   }
 
 }
