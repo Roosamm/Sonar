@@ -54,7 +54,7 @@ export class FrontPage {
         this.sonarArray = stuff;
         for(let str of this.mediaArray){
           for(let tmp of this.sonarArray){
-            if(str.filename == tmp.filename){
+            if(str['filename'] == tmp['filename']){
               this.resultArray.push(tmp);
             }
           }
@@ -65,12 +65,12 @@ export class FrontPage {
             this.postArray = data;
             for(let res of this.resultArray){
               for(let evt of this.allEvents){
-                if(res.filename == evt.filename){
+                if(res['filename'] == evt['filename']){
                   this.eventArray.push(evt)
                 }
               }
               for(let post of this.allPosts){
-                if(res.filename == post.filename){
+                if(res['filename'] == post['filename']){
                   this.postArray.push(post)
                 }
               }
@@ -88,7 +88,7 @@ export class FrontPage {
         this.allEvents = data;
         for (let sonar of this.sonarArray) {
           for (let evt of this.allEvents) {
-            if (sonar.filename == evt.filename) {
+            if (sonar['filename'] == evt['filename']) {
               this.eventArray.push(evt);
             }
           }
@@ -102,7 +102,7 @@ export class FrontPage {
       this.mediaProvider.getMediaByTag("post").subscribe(data =>{this.allPosts = data;
         for(let sonar of this.sonarArray){
           for(let post of this.allPosts){
-            if(sonar.filename == post.filename){
+            if(sonar['filename'] == post['filename']){
               this.postArray.push(post);
             }
           }
