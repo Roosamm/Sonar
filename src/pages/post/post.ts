@@ -14,18 +14,20 @@ import {Posts} from '../../app/models/posts';
 })
 export class PostPage {
 
+
+  public toggled: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController, public mediaProvider: MediaProvider) {
     menu.enable(true);
   }
-
-  public toggled: boolean = false;
 
   post: Posts = {
     title: '',
     info: '',
     time: '',
     cost: '',
-    capasity: ''
+    capasity: '',
+    interests: ''
   };
 
   ionViewDidLoad() {

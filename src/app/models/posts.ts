@@ -4,4 +4,5 @@ export interface Posts {
   time: string;
   cost: string;
   capasity: string;
+  interests: string;
 }

@@ -1,9 +1,3 @@
-<!--
-  Generated template for the PostPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <ion-row>
@@ -32,70 +26,71 @@
                        (ionCancel)="onCancel()"></ion-searchbar>
       </div>
 
-
-      <ion-card-content>
-        <ion-card>
-          <ion-list radio-group> <!--[(ngModel)]="PostIt"-->
-
-            <ion-item>
-              <ion-label>Event</ion-label>
-              <ion-radio value="event" checked></ion-radio>
-            </ion-item>
-
-            <!-- Seen to events and posts -->
-            <ion-item>
-              <ion-input type="text" [(ngModel)]="post.title" placeholder="Title"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-input type="text" [(ngModel)]="post.info" placeholder="Info"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label>Interest</ion-label>
-              <ion-select [(ngModel)]="interests">
-                <ion-option>Culture</ion-option>
-                <ion-option>Sports</ion-option>
-                <ion-option>Science</ion-option>
-                <ion-option>Food</ion-option>
-                <ion-option>Business</ion-option>
-                <ion-option>Animals</ion-option>
-              </ion-select>
-            </ion-item>
-
-            <!-- Seen only to events  -->
-            <ion-item>
-              <ion-radio type="text" <!--value=""--> [(ngModel)]="post.time" [disabled]="Time" placeholder="Time" ></ion-radio>
-            </ion-item>
-
-            <ion-item>
-              <ion-radio type="text" [(ngModel)]="post.cost" [disabled]="isHidden" placeholder="Cost" ></ion-radio>
-            </ion-item>
-
-            <ion-item>
-              <ion-radio type="text" [(ngModel)]="post.capasity" [disabled]="isHidden" placeholder="Capasity" ></ion-radio>
-            </ion-item>
-
-          <!--
-            <ion-item *ngIf="photoUploaded">
-              <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
-            </ion-item> -->
-            <ion-item>
-              <button ion-button (click)="captureImage()">Upload picture</button>
-            </ion-item>
-
-            <button ion-button (click)="cancel()"> Cancel </button>
-            <button ion-button (click)="postIt()" type="submit">Post</button>
-
-          </ion-list>
-        </ion-card>
-      </ion-card-content>
-
     </ion-row>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+
+<ion-card-content>
+  <ion-card>
+    <ion-list radio-group> <!--[(ngModel)]="PostIt"-->
+
+      <ion-item>
+        <ion-label>Make an post</ion-label>
+      </ion-item>
+
+      <!-- Seen to events and posts -->
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="post.title" name="title" placeholder="Title" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="post.info" name="info" placeholder="Info" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Interest</ion-label>
+        <ion-select [(ngModel)]="post.interests" name="interests" placeholder="Interest" required>
+          <ion-option>Culture</ion-option>
+          <ion-option>Sports</ion-option>
+          <ion-option>Science</ion-option>
+          <ion-option>Food</ion-option>
+          <ion-option>Business</ion-option>
+          <ion-option>Animals</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Seen only to events
+      <ion-item [hidden]="isHidden">
+        <ion-radio type="text" [(ngModel)]="post.time" name="time" placeholder="Time" ngDefaultControl></ion-radio>
+      </ion-item>
+
+      <ion-item [hidden]="isHidden">
+        <ion-radio type="text" [(ngModel)]="post.cost" name="cost" placeholder="Cost" ngDefaultControl></ion-radio>
+      </ion-item>
+
+      <ion-item [hidden]="isHidden">
+        <ion-radio type="text" [(ngModel)]="post.capasity" name="capasity" placeholder="Capasity" ngDefaultControl></ion-radio>
+      </ion-item>
+      -->
+
+
+      <ion-item *ngIf="photoUploaded">
+          <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
+      </ion-item>
+      <ion-item>
+        <button ion-button (click)="captureImage()">Upload picture</button>
+      </ion-item>
+
+      <div class="buttons">
+        <button ion-button (click)="cancel()"> Cancel </button>
+        <button ion-button (click)="postIt()" type="submit">Post</button>
+      </div>
+
+    </ion-list>
+  </ion-card>
+</ion-card-content>
 
 </ion-content>
