@@ -2,13 +2,9 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {topBar} from "../../app/topBar";
+import {LoginPage} from '../login/login';
 
-/**
- * Generated class for the FrontPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -63,35 +59,4 @@ export class FrontPage {
       });
     });
   }
-<<<<<<< HEAD
-
-  openMenu(evt) {
-    if (evt === "menuCategories") {
-      this.menu.enable(true, 'menuCategories');
-      this.menu.enable(false, 'userMenu');
-    } else {
-      this.menu.enable(true, 'userMenu');
-      this.menu.enable(false, 'menuCategories');
-    }
-    this.menu.toggle();
-  }
-
-  login() {
-    this.navCtrl.setRoot(LoginPage);
-  }
-
-  toFront() {
-    this.navCtrl.setRoot(FrontPage);
-  }
-
-//hidden search bar
-  private toggle(): void {
-    this.toggled = true;
-  }
-
-  private onCancel(): void {
-    this.toggled = false;
-  }
-=======
->>>>>>> 75049fd45aae33ae5cb0908a5f8d9362733a7f1f
 }
