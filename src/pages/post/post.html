@@ -33,7 +33,7 @@
 
 <ion-content padding>
 
-<ion-card-content>
+<ion-card-content class="card">
   <ion-card>
     <ion-list radio-group> <!--[(ngModel)]="PostIt"-->
 
@@ -78,7 +78,7 @@
 
 
       <ion-item *ngIf="photoUploaded">
-          <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
+          <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
       </ion-item>
       <ion-item>
         <button ion-button (click)="captureImage()">Upload picture</button>
