@@ -78,15 +78,13 @@ export class UploadPage {
       formData.append('title', 'SonarTMP');
       formData.append('description', 'SonarTMP');
       // send FormData object to API
-      this.mediaProvider.upload(formData, localStorage.getItem('token')).
-      subscribe(response => {
-        let fileId = response['file_id'];
-        this.shareService.fileID = fileId;
-        setTimeout(() => {
-          this.navCtrl.pop();
-        },1500)
-      }, (error: HttpErrorResponse) => {
-        console.log(error);
+      this.mediaProvider.upload(formData, localStorage.getItem('token')).subscribe(response => {
+        this.shareService.fileID = response['file_id'];
+        this.mediaProvider.postTag("Sonar", localStorage.getItem('token'), this.shareService.fileID).subscribe(resp => {
+          setTimeout(() => {
+            this.navCtrl.pop();
+          },1500)
+        })
       });
     }, 'image/jpeg', 0.5);
 

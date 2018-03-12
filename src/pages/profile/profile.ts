@@ -3,6 +3,7 @@ import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 import {topBar} from "../../app/topBar";
 import {ShareProvider} from "../../providers/share/share";
+import {UploadPage} from "../upload/upload";
 
 @IonicPage()
 @Component({
@@ -11,14 +12,14 @@ import {ShareProvider} from "../../providers/share/share";
 })
 export class ProfilePage {
 
-  private userID: String;
+  private userID: string;
   //TO DO:
   //create a default empty photo and set it below
-  private profilePicFilename: String;
-  private profilePicFileID: String;
-
-  private email: String;
-  private fullname: String;
+  private profilePicFilename: string;
+  private profilePicFileID: string;
+  private username: string;
+  private email: string;
+  private fullname: string;
   private favourites: Array<string>;
   private interests: Array<string>;
   public tb: topBar;
@@ -41,6 +42,7 @@ export class ProfilePage {
       this.userID = response['user_id'];
       this.email = response['email'];
       this.fullname = response['full_name'];
+      this.username = response['username'];
       this.mediaProvider.getMediaByTag("SonarProfile").subscribe(response=>{
         for(let media of response){
           if(media['user_id']==this.userID){
@@ -56,11 +58,32 @@ export class ProfilePage {
         }
       });
     });
+  }
 
+  public captureImage() {
+    this.navCtrl.push(UploadPage);
+  }
 
+  changePhoto(){
+    let token = localStorage.getItem('token');
+    this.mediaProvider.updateInfo(this.shareService.fileID, this.username, this.fullname, token).subscribe(response =>{
+      this.profilePicFileID = this.shareService.fileID;
+      this.mediaProvider.getSingleMedia(this.profilePicFileID).subscribe(data =>{
+        this.profilePicFilename = data['filename'];
+        this.mediaProvider.postTag("ProfilePic",token,this.profilePicFileID);
+        this.shareService.fileID="";
+      })
+    });
   }
 
   settingsOn() {
     this.settings = true;
   }
+
+  ionViewDidEnter(){
+    if(this.shareService.fileID != "") {
+      this.changePhoto();
+    }
+  }
 }
+

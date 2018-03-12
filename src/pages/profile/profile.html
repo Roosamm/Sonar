@@ -36,7 +36,7 @@
                   <!-- "split" Error here <ion-img  [src]="mediaProvider.mediaUrl+(profilePicFilename | thumbnail:'medium')"></ion-img> -->
                   <img src="../../assets/img/new_user.png"/>
                   <div class="buttonBlock">
-                    <button ion-button>Change picture</button>
+                    <button ion-button (click)="captureImage()">Change picture</button>
                     <button ion-button *ngIf="!settings" (click)="settingsOn()">Settings</button>
                   </div>
                 </ion-col>
