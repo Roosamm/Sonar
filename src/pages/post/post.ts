@@ -43,7 +43,7 @@ export class PostPage {
       }
 
       this.mediaProvider.updateInfo(this.shareService.fileID,this.post.title,this.post.info, localStorage.getItem('token')).subscribe(response => {
-        alert("we got a response from updating file info")
+        alert("we got a response from updating file info");
         this.mediaProvider.postTag(this.post.interests,localStorage.getItem('token'),this.shareService.fileID).subscribe(resp => {
           this.shareService.fileID = "";
           this.navCtrl.setRoot(FrontPage).catch(e => {alert(e)});

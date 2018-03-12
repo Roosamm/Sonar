@@ -4,7 +4,7 @@
       <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('menuCategories')">
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title (click)="tb.redirectToFront()"><img class="logo" ssrc="assets/img/New_LOGO.png"/></ion-title>
+      <ion-title (click)="tb.redirectToFront()"><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
       <!-- When user is not logged -->
 
@@ -48,51 +48,19 @@
                          ngDefaultControl></ion-input>
               <ion-input type="number" [(ngModel)]="post.capasity" name="capasity" placeholder="Capasity"
                          ngDefaultControl></ion-input>
-              <ion-label>Choose the category</ion-label>
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Culture</ion-label>
-                      <ion-checkbox color="secondary""></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Sports</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Animals</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Science</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Food</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Business</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
+              <ion-item>
+                <ion-input type="text" [(ngModel)]="post.info"></ion-input>
+                <ion-label>Interest</ion-label>
+                <ion-select [(ngModel)]="interests">
+                  <ion-option>Culture</ion-option>
+                  <ion-option>Sports</ion-option>
+                  <ion-option>Science</ion-option>
+                  <ion-option>Food</ion-option>
+                  <ion-option>Business</ion-option>
+                  <ion-option>Animals</ion-option>
+                </ion-select>
+              </ion-item>
+
               <ion-item *ngIf="photoUploaded">
                 <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
               </ion-item>
@@ -111,52 +79,18 @@
             <div *ngSwitchCase="'post'">
               <ion-input type="text" [(ngModel)]="post.title" name="title" placeholder="Title" required></ion-input>
               <ion-input type="text" [(ngModel)]="post.info" name="info" placeholder="Info" required></ion-input>
-
-              <ion-label>Choose the category</ion-label>
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Culture</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Sports</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Animals</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Science</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Food</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                  <ion-col>
-                    <ion-item>
-                      <ion-label>Business</ion-label>
-                      <ion-checkbox color="secondary"></ion-checkbox>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
+              <ion-item>
+                <ion-input type="text" [(ngModel)]="post.info"></ion-input>
+                <ion-label>Interest</ion-label>
+                <ion-select [(ngModel)]="interests">
+                  <ion-option>Culture</ion-option>
+                  <ion-option>Sports</ion-option>
+                  <ion-option>Science</ion-option>
+                  <ion-option>Food</ion-option>
+                  <ion-option>Business</ion-option>
+                  <ion-option>Animals</ion-option>
+                </ion-select>
+              </ion-item>
 
               <ion-item *ngIf="photoUploaded">
                 <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'medium')" required></ion-img>
