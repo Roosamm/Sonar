@@ -24,7 +24,6 @@ export class PostPage {
   constructor(public navCtrl: NavController, public menu: MenuController, public mediaProvider: MediaProvider, public shareService: ShareProvider) {
     menu.enable(true);
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
-    this.postOrEvent = 'event';
   }
 
   post: Posts = {
@@ -42,11 +41,12 @@ export class PostPage {
         let tmpStr = this.post.info + "<br><b>When: </b>"+this.post.time + "<br><b>Cost: </b>"+this.post.cost +"<br><b>Capacity: </b>"+this.post.capasity;
         this.post.info = tmpStr;
       }
-      this.mediaProvider.updateInfo(this.shareService.fileID,this.post.title,this.post.info).subscribe(response => {
+
+      this.mediaProvider.updateInfo(this.shareService.fileID,this.post.title,this.post.info, localStorage.getItem('token')).subscribe(response => {
+        alert("we got a response from updating file info")
         this.mediaProvider.postTag(this.post.interests,localStorage.getItem('token'),this.shareService.fileID).subscribe(resp => {
           this.shareService.fileID = "";
-          console.log('posted');
-          this.navCtrl.setRoot(FrontPage);
+          this.navCtrl.setRoot(FrontPage).catch(e => {alert(e)});
           this.mediaProvider.logged = true;
         })
       });
