@@ -68,8 +68,7 @@ export class UploadPage {
     });
   }
 
-  upload(shareProvider: ShareProvider) {
-    this.loading.present();
+  upload() {
     // convert canvas to blob and upload
     this.canvas.toBlob(blob => {
       // create FormData-object
@@ -77,18 +76,25 @@ export class UploadPage {
       formData.append('file', blob);
       // add title and description to FormData object
       formData.append('title', 'SonarTMP');
+      formData.append('description', 'SonarTMP');
       // send FormData object to API
       this.mediaProvider.upload(formData, localStorage.getItem('token')).
       subscribe(response => {
-        const fileId = response['file_id'];
-        shareProvider.fileID = fileId;
-        this.navCtrl.pop();
+        let fileId = response['file_id'];
+        this.shareService.fileID = fileId;
+        setTimeout(() => {
+          this.navCtrl.pop();
+        },1500)
       }, (error: HttpErrorResponse) => {
         console.log(error);
-        this.loading.dismiss();
       });
     }, 'image/jpeg', 0.5);
 
+  }
+
+  ionViewDidLoad() {
+    // select element here, when it's ready
+    this.canvas = this.canvasRef.nativeElement;
   }
 
 }

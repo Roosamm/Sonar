@@ -159,7 +159,7 @@
               </ion-grid>
 
               <ion-item *ngIf="photoUploaded">
-                <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
+                <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'medium')" required></ion-img>
               </ion-item>
               <ion-item>
                 <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>

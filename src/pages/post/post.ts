@@ -15,10 +15,11 @@ import {topBar} from "../../app/topBar";
 export class PostPage {
 
 
-  public toggled: boolean = false;
+  public photoUploaded: boolean = false;
   public tb: topBar;
   postOrEvent: string;
   timeModel: string;
+  photoName: string;
 
   constructor(public navCtrl: NavController, public menu: MenuController, public mediaProvider: MediaProvider, public shareService: ShareProvider) {
     menu.enable(true);
@@ -37,6 +38,10 @@ export class PostPage {
 
   public postIt() {
     if(this.shareService.fileID != ""){
+      if(this.postOrEvent == "event"){
+        let tmpStr = this.post.info + "<br><b>When: </b>"+this.post.time + "<br><b>Cost: </b>"+this.post.cost +"<br><b>Capacity: </b>"+this.post.capasity;
+        this.post.info = tmpStr;
+      }
       this.mediaProvider.updateInfo(this.shareService.fileID,this.post.title,this.post.info).subscribe(response => {
         this.mediaProvider.postTag(this.post.interests,localStorage.getItem('token'),this.shareService.fileID).subscribe(resp => {
           this.shareService.fileID = "";
@@ -55,5 +60,13 @@ export class PostPage {
   public cancel() {
       this.navCtrl.setRoot(FrontPage);
     }
-
+  ionViewDidEnter() {
+    if(this.shareService.fileID!="") {
+      this.mediaProvider.getSingleMedia(this.shareService.fileID).subscribe(data=>{
+        this.photoName = data['filename'];
+        this.photoUploaded = true;
+        alert("photoUploaded is set to" + this.photoUploaded);
+      })
+    }
+  }
 }
