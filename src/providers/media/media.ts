@@ -80,4 +80,22 @@ export class MediaProvider {
     };
       return this.http.put(this.apiUrl+'/media/' + id, {"title": title, "description": description},settings)
   }
+
+  getAmountOfFavourites(id: string){
+    return this.http.get<Array<string>>(this.apiUrl+'/favourites/file/'+id);
+  }
+
+  addFavourite(id: string, token){
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.post(this.apiUrl+'/favourites',{"file_id": id}, settings)
+  }
+
+  removeFavourite(id: string, token){
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.delete(this.apiUrl+'/favourites/file/'+id, settings)
+  }
 }

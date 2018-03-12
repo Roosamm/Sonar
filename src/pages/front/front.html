@@ -61,9 +61,6 @@
               <img [src]="mediaProvider.mediaUrl + (evt.filename | thumbnail:'small')">
               <div class="card-title"> {{evt.title}}</div>
               <div class="card-subtitle"><b>Description: </b>{{evt.description}} <br>
-                <button ion-button>Join
-                  <ion-badge>{{<!--Favourites number for event?!--> }}</ion-badge>
-                </button>
               </div>
 
             </ion-card>
@@ -97,6 +94,13 @@
                   <img [src]="mediaProvider.mediaUrl + (evt.filename | thumbnail:'small')">
                   <div class="card-title"> {{evt.title}}</div>
                   <div class="card-subtitle"><b>Description: </b>{{evt.description}}</div>
+                  <!-- Two buttons that appear and disappear when user has the file in favourites-->
+                  <button ion-button (click)="addFavourite(evt)" *ngIf="isFavourite(evt)">Join
+                    <ion-badge>{{getAmountOfFavourites(evt)}}</ion-badge>
+                  </button>
+                  <button ion-button (click)="removeFavourite(evt)" *ngIf="!isFavourite(evt)">Joined
+                    <ion-badge>{{getAmountOfFavourites(evt)}}</ion-badge>
+                  </button>
                 </ion-card>
               </ion-col>
             </ion-row>
@@ -113,6 +117,13 @@
                   <img [src]="mediaProvider.mediaUrl + (post.filename | thumbnail:'small')">
                   <div class="card-title"> {{post.title}}</div>
                   <div class="card-subtitle"><b>Description: </b>{{post.description}}</div>
+                  <!-- Two buttons that appear and disappear when user has the file in favourites-->
+                  <button ion-button (click)="addFavourite(evt)" *ngIf="isFavourite(evt)">Like
+                    <ion-badge>{{getAmountOfFavourites(evt)}}</ion-badge>
+                  </button>
+                  <button ion-button (click)="removeFavourite(evt)" *ngIf="!isFavourite(evt)">Liked
+                    <ion-badge>{{getAmountOfFavourites(evt)}}</ion-badge>
+                  </button>
                 </ion-card>
               </ion-col>
             </ion-row>

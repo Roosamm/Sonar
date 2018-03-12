@@ -59,10 +59,6 @@
                   <ion-option>Animals</ion-option>
                 </ion-select>
               </ion-item>
-
-              <ion-item *ngIf="photoUploaded">
-                <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" required></ion-img>
-              </ion-item>
               <ion-item>
                 <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
               </ion-item>
@@ -89,10 +85,6 @@
                   <ion-option>Animals</ion-option>
                 </ion-select>
               </ion-item>
-
-              <ion-item *ngIf="photoUploaded">
-                <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'medium')" required></ion-img>
-              </ion-item>
               <ion-item>
                 <button ion-button class="postBtn" (click)="captureImage()">Upload picture</button>
               </ion-item>
@@ -105,6 +97,9 @@
               </ion-item>
             </div>
           </div>
+          <ion-item *ngIf="photoUploaded">
+            <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'medium')" required></ion-img>
+          </ion-item>
         </ion-card>
       </ion-col>
     </ion-row>
