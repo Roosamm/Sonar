@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, MenuController, NavController} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {topBar} from "../../app/topBar";
 import {ShareProvider} from "../../providers/share/share";
@@ -24,15 +24,21 @@ export class FrontPage {
   allPosts: Array<string>= [];
   listOfPages: string = "Events";
   public tb: topBar;
+  search: string;
 
 
-  constructor(public navCtrl: NavController, public mediaProvider: MediaProvider, public menu: MenuController, public shareService: ShareProvider) {
+  constructor(public navCtrl: NavController, public navParam: NavParams, public mediaProvider: MediaProvider, public menu: MenuController, public shareService: ShareProvider) {
     this.getEventFeed();
     this.getPostFeed();
     this.listOfPages = 'Events';
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
+    this.search = navParam.get('category');
   }
-
+  ionViewDidLoad() {
+    if(this.search!=null){
+      this.tb.searchItems(this.search);
+    }
+  }
   getEventFeed(){
     this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>{
       this.sonarArray = data;

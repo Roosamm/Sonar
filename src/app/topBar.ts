@@ -25,6 +25,19 @@ export class topBar {
   //final search results are in eventArray and postArray
   getItems(event) {
     let query = event.target.value;
+    this.searchItems(query);
+  }
+
+  searchItems(query: string){
+    //empty arrays before performing a new search
+    this.mediaArray.length=0;
+    this.sonarArray.length=0;
+    this.resultArray.length=0;
+    this.allEvents.length=0;
+    this.allPosts.length=0;
+    this.eventArray.length=0;
+    this.postArray.length=0;
+
     this.mediaProvider.getMediaByTag(query).subscribe(data => {
       this.mediaArray = data;
       this.mediaProvider.getMediaByTag("Sonar").subscribe(stuff => {
