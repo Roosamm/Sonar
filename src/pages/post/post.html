@@ -43,7 +43,7 @@
             <div *ngSwitchCase="'event'">
               <ion-input type="text" [(ngModel)]="post.title" name="title" placeholder="Title" required></ion-input>
               <ion-input type="text" [(ngModel)]="post.info" name="info" placeholder="Info" required></ion-input>
-              <ion-input type="datetime-local" [(ngModel)]="post.time" placeholder="Time"></ion-input>
+              <ion-input type="text" [(ngModel)]="post.time" placeholder="Time"></ion-input>
               <ion-input type="text" [(ngModel)]="post.cost" name="cost" placeholder="Cost"
                          ngDefaultControl></ion-input>
               <ion-input type="number" [(ngModel)]="post.capasity" name="capasity" placeholder="Capasity"

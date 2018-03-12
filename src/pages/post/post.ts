@@ -36,20 +36,23 @@ export class PostPage {
   };
 
   public postIt() {
-    if(this.shareService.fileID != ""){
-      if(this.postOrEvent == "event"){
-        let tmpStr = this.post.info + "<br><b>When: </b>"+this.post.time + "<br><b>Cost: </b>"+this.post.cost +"<br><b>Capacity: </b>"+this.post.capasity;
+    if(this.shareService.fileID != "") {
+      let token = localStorage.getItem('token');
+      if (this.postOrEvent == "event") {
+        let tmpStr = this.post.info; //+ "<br><b>When: </b>"+this.post.time + "<br><b>Cost: </b>"+this.post.cost +"<br><b>Capacity: </b>"+this.post.capasity;
         this.post.info = tmpStr;
       }
-
-      this.mediaProvider.updateInfo(this.shareService.fileID,this.post.title,this.post.info, localStorage.getItem('token')).subscribe(response => {
-        alert("we got a response from updating file info");
-        this.mediaProvider.postTag(this.post.interests,localStorage.getItem('token'),this.shareService.fileID).subscribe(resp => {
-          this.shareService.fileID = "";
-          this.navCtrl.setRoot(FrontPage).catch(e => {alert(e)});
-          this.mediaProvider.logged = true;
+      this.mediaProvider.updateInfo(this.shareService.fileID, this.post.title, this.post.info, token).subscribe(response => {
+        this.mediaProvider.postTag(this.postOrEvent, localStorage.getItem('token'), this.shareService.fileID).subscribe(resp => {
+          this.mediaProvider.postTag(this.post.interests, localStorage.getItem('token'), this.shareService.fileID).subscribe(resp => {
+            this.shareService.fileID = "";
+            this.navCtrl.setRoot(FrontPage).catch(e => {
+              alert(e)
+            });
+            this.mediaProvider.logged = true;
+          })
         })
-      });
+      })
     }
   }
 
@@ -65,7 +68,6 @@ export class PostPage {
       this.mediaProvider.getSingleMedia(this.shareService.fileID).subscribe(data=>{
         this.photoName = data['filename'];
         this.photoUploaded = true;
-        alert("photoUploaded is set to" + this.photoUploaded);
       })
     }
   }

@@ -78,9 +78,6 @@ export class MediaProvider {
     const settings = {
       headers: new HttpHeaders().set('x-access-token', token),
     };
-      return this.http.post(this.apiUrl+'media/' + id, {
-        "title": title,
-        "decription": description
-      },settings)
+      return this.http.put(this.apiUrl+'/media/' + id, {"title": title, "description": description},settings)
   }
 }
