@@ -30,7 +30,6 @@ export class FrontPage {
   constructor(public navCtrl: NavController, public navParam: NavParams, public mediaProvider: MediaProvider, public menu: MenuController, public shareService: ShareProvider) {
     this.getEventFeed();
     this.getPostFeed();
-    this.getFavourites();
     this.listOfPages = 'Events';
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
     this.search = navParam.get('category');
@@ -38,6 +37,9 @@ export class FrontPage {
   ionViewDidEnter() {
     if(this.search!=null){
       this.tb.searchItems(this.search);
+    }
+    if(this.mediaProvider.logged){
+      this.getFavourites();
     }
   }
   getEventFeed(){
@@ -72,9 +74,11 @@ export class FrontPage {
     });
   }
   getFavourites(){
-    this.mediaProvider.getFavourites(localStorage.getItem('token')).subscribe(data=>{
+    let token = localStorage.getItem('token');
+    this.mediaProvider.getFavourites(token).subscribe(data=>{
       this.favourites = data;
     })
+
   }
   isFavourite(evt){
     for(let fav of this.favourites){
