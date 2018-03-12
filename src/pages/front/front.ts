@@ -5,7 +5,6 @@ import {topBar} from "../../app/topBar";
 import {ShareProvider} from "../../providers/share/share";
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-front',
@@ -22,7 +21,7 @@ export class FrontPage {
   public postArray: Array<string> = [];
   allEvents: Array<string>= [];
   allPosts: Array<string>= [];
-  listOfPages: string = "Events";
+  listOfPages: string;
   public tb: topBar;
   search: string;
 

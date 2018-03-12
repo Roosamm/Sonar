@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController} from 'ionic-angular';
 import {MediaProvider} from '../../providers/media/media';
 import {FrontPage} from '../front/front';
-import {ProfilePage} from '../profile/profile';
 import {UploadPage} from '../upload/upload';
 import {Posts} from '../../app/models/posts';
 import {ShareProvider} from "../../providers/share/share";
@@ -18,10 +17,13 @@ export class PostPage {
 
   public toggled: boolean = false;
   public tb: topBar;
+  postOrEvent: string;
+  timeModel: string;
 
   constructor(public navCtrl: NavController, public menu: MenuController, public mediaProvider: MediaProvider, public shareService: ShareProvider) {
     menu.enable(true);
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
+    this.postOrEvent = 'event';
   }
 
   post: Posts = {
