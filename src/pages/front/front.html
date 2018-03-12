@@ -56,12 +56,17 @@
       <ion-grid>
         <ion-row>
           <ion-col col-12 col-sm-6 offset-sm-3>
+
             <ion-card class="columnEvents">
               <img [src]="mediaProvider.mediaUrl + (evt.filename | thumbnail:'small')">
               <div class="card-title"> {{evt.title}}</div>
-              <div class="card-subtitle"><b>Description: </b>{{evt.description}}</div>
-              <!-- <button ion-button=""> </button> -->
-      </ion-card>
+              <div class="card-subtitle"><b>Description: </b>{{evt.description}} <br>
+                <button ion-button>Join
+                  <ion-badge>{{<!--Favourites number for event?!--> }}</ion-badge>
+                </button>
+              </div>
+
+            </ion-card>
           </ion-col>
         </ion-row>
       </ion-grid>
