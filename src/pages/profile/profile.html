@@ -24,8 +24,41 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-title>{{fullname}}</ion-card-title>
-    <ion-img [src]="mediaProvider.mediaUrl+(profilePicFilename | thumbnail:'medium')"></ion-img>
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-6 offset-sm-3>
+        <ion-card padding="">
+          <ion-card-title>{{fullname}}</ion-card-title>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <!-- "split" Error here <ion-img  [src]="mediaProvider.mediaUrl+(profilePicFilename | thumbnail:'medium')"></ion-img> -->
+                  <img src="../../assets/img/new_user.png"/>
+                  <div class="buttonBlock">
+                    <button ion-button>Change picture</button>
+                    <button ion-button *ngIf="!settings" (click)="settingsOn()">Settings</button>
+                  </div>
+                </ion-col>
+                <ion-col *ngIf="!settings">
+                  <p><b>Email:</b> {{email}} </p>
+                  <p><b>Interests: </b> {{interests}} </p>
+                  <p><b>Favourites: </b> {{favourites}} </p>
+                </ion-col>
+                <ion-col *ngIf="settings">
+                  <ion-input type="text" placeholder="Change name"></ion-input>
+                  <ion-input type="email" placeholder="Change email"></ion-input>
+                  <ion-input type="password" placeholder="Change password"></ion-input>
+                  <div class="buttonSave">
+                    <button ion-button type="submit">Save</button>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

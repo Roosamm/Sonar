@@ -21,14 +21,15 @@ export class ProfilePage {
   private fullname: String;
   private favourites: Array<string>;
   private interests: Array<string>;
-  public toggled: boolean = false;
   public tb: topBar;
+
+  private settings: boolean;
 
 
   constructor(private mediaProvider: MediaProvider, public menu: MenuController, public navCtrl: NavController, public shareService: ShareProvider) {
-    this.menu.enable(true);
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
     this.getUserInformation();
+    this.settings = false;
   }
 
   ionViewDidLoad() {
@@ -55,5 +56,11 @@ export class ProfilePage {
         }
       });
     });
+
+
+  }
+
+  settingsOn() {
+    this.settings = true;
   }
 }
