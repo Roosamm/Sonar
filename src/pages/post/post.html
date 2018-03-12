@@ -6,12 +6,6 @@
       </button>
       <ion-title (click)="tb.redirectToFront()"><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
-      <!-- When user is not logged -->
-
-      <div *ngIf="!mediaProvider.logged">
-        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
-      </div>
-
       <!-- When user is logged -->
       <div *ngIf="mediaProvider.logged">
         <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('userMenu')">
@@ -27,7 +21,7 @@
   <ion-grid padding>
     <ion-row>
       <ion-col col-12 col-sm-6 offset-sm-3>
-        <ion-card class="style">
+        <ion-card>
           <div padding>
             <ion-segment [(ngModel)]="postOrEvent">
               <ion-segment-button value="event">
@@ -64,7 +58,6 @@
               </ion-item>
 
               <ion-item class="buttons">
-                <button ion-button class="postBtn" (click)="cancel()"> Cancel</button>
                 <button ion-button class="postBtn" item-right="" (click)="postIt()" [disabled]="!photoUploaded"
                         type="submit">Post
                 </button>
@@ -90,7 +83,6 @@
               </ion-item>
 
               <ion-item class="buttons">
-                <button ion-button class="postBtn" (click)="cancel()"> Cancel</button>
                 <button ion-button class="postBtn" item-right="" (click)="postIt()" [disabled]="!photoUploaded"
                         type="submit">Post
                 </button>

@@ -6,12 +6,6 @@
       </button>
       <ion-title (click)="tb.redirectToFront()"><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
-      <!-- When user is not logged -->
-
-      <div *ngIf="!mediaProvider.logged">
-        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
-      </div>
-
       <!-- When user is logged -->
       <div *ngIf="mediaProvider.logged">
         <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('userMenu')">
@@ -24,8 +18,9 @@
 
 
 <ion-content padding>
-  <button ion-button (click)="captureImage()">Take photo</button>
-  <button ion-button (click)="upload()" [disabled]="isCanvasEmpty">Upload</button>
+  <button ion-button class="buttonPic" (click)="captureImage()">Take photo</button>
+  <button ion-button class="buttonPic" (click)="upload()" [disabled]="isCanvasEmpty">Upload</button>
+
   <canvas #myCanvas></canvas>
   <ion-list [hidden]="isCanvasEmpty">
     <ion-item>

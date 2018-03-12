@@ -7,7 +7,9 @@
       <ion-title (click)="tb.redirectToFront()"><img class="logo" src="assets/img/New_LOGO.png"/></ion-title>
 
       <div>
-        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
+        <button ion-button icon-only="" class="logIn" (click)="tb.redirectToLogin()">
+          <ion-icon name="log-in"></ion-icon>
+        </button>
       </div>
     </ion-row>
   </ion-navbar>
@@ -33,9 +35,9 @@
             </ion-item>
 
           </ion-list>
-            <button type="submit" ion-button color="primary" block>Sign In</button>
-            <button type="submit" ion-button (click)="toRegister()" color="primary" block>Register</button>
-
+          <button type="submit" ion-button block color="primary">Sign In</button>
+          <div class="welcome"><p><i>OR</i></p></div>
+          <button type="submit" ion-button block (click)="toRegister()" color="primary">Register</button>
         </form>
       </ion-col>
     </ion-row>

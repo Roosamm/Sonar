@@ -9,15 +9,11 @@
       <!-- When user is not logged -->
 
       <div *ngIf="!mediaProvider.logged">
-        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
-      </div>
-
-      <!-- When user is logged -->
-      <div *ngIf="mediaProvider.logged">
-        <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('userMenu')">
-          <ion-icon name="contact"></ion-icon>
+        <button ion-button icon-only="" class="logIn" (click)="tb.redirectToLogin()">
+          <ion-icon name="log-in"></ion-icon>
         </button>
       </div>
+
     </ion-row>
   </ion-navbar>
 </ion-header>
@@ -25,10 +21,15 @@
 
   <ion-card col-12 col-sm-6 offset-sm-3>
     <ion-card-header>
-      <h1>Register</h1>
+      <ion-row>
+        <h1>
+          <ion-icon name="arrow-back" class="backBut" (click)="back()"></ion-icon>
+        </h1>
+        <h1>Register</h1>
+      </ion-row>
     </ion-card-header>
 
-    <ion-card-content class="card">
+    <ion-card-content>
       <ion-list>
         <ion-item>
           <ion-input class="input" type="text" [(ngModel)]="user.username" placeholder="Alias*" required=""></ion-input>
@@ -54,11 +55,7 @@
         <ion-item *ngIf="photoUploaded">
           <ion-img [src]="mediaProvider.mediaUrl + (photoName | thumbnail:'small')" ></ion-img>
         </ion-item>
-
-        <ion-item class="buttons">
-          <button ion-button class="registerBut" (click)="back()"> Back</button>
-          <button ion-button item-right="" class="registerBut" (click)="register()" type="submit">Register</button>
-        </ion-item>
+        <button ion-button class="registerBut" (click)="register()" type="submit">Register</button>
       </ion-list>
     </ion-card-content>
   </ion-card>

@@ -26,7 +26,6 @@ export class ProfilePage {
 
   private settings: boolean;
 
-
   constructor(private mediaProvider: MediaProvider, public menu: MenuController, public navCtrl: NavController, public shareService: ShareProvider) {
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
     this.getUserInformation();
@@ -36,6 +35,7 @@ export class ProfilePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
+
 
   getUserInformation(){
     this.mediaProvider.getUserData(localStorage.getItem('token')).subscribe(response =>{
@@ -77,7 +77,11 @@ export class ProfilePage {
   }
 
   settingsOn() {
-    this.settings = true;
+    if (this.settings) {
+      this.settings = false;
+    } else {
+      this.settings = true;
+    }
   }
 
   ionViewDidEnter(){

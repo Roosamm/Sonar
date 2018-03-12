@@ -24,6 +24,7 @@ export class PostPage {
   constructor(public navCtrl: NavController, public menu: MenuController, public mediaProvider: MediaProvider, public shareService: ShareProvider) {
     menu.enable(true);
     this.tb = new topBar(this.navCtrl, this.mediaProvider, this.menu, this.shareService);
+    this.postOrEvent = 'event';
   }
 
   post: Posts = {

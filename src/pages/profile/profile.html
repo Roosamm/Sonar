@@ -6,12 +6,6 @@
       </button>
       <ion-title (click)="tb.redirectToFront()"><img class="logo" src="../../assets/img/New_LOGO.png"/></ion-title>
 
-      <!-- When user is not logged -->
-
-      <div *ngIf="!mediaProvider.logged">
-        <button ion-button no-lines class="logIn" (click)="tb.redirectToLogin()">Log In</button>
-      </div>
-
       <!-- When user is logged -->
       <div *ngIf="mediaProvider.logged">
         <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('userMenu')">
@@ -28,7 +22,12 @@
     <ion-row>
       <ion-col col-12 col-sm-6 offset-sm-3>
         <ion-card padding="">
-          <ion-card-title>{{fullname}}</ion-card-title>
+          <ion-card-title>
+            <h1 *ngIf="settings">
+              <ion-icon name="arrow-back" class="backBut" (click)="settingsOn()"></ion-icon>
+            </h1>
+            {{fullname}}
+          </ion-card-title>
           <ion-card-content>
             <ion-grid>
               <ion-row>
@@ -36,8 +35,14 @@
                   <!-- "split" Error here <ion-img  [src]="mediaProvider.mediaUrl+(profilePicFilename | thumbnail:'medium')"></ion-img> -->
                   <img src="../../assets/img/new_user.png"/>
                   <div class="buttonBlock">
-                    <button ion-button (click)="captureImage()">Change picture</button>
-                    <button ion-button *ngIf="!settings" (click)="settingsOn()">Settings</button>
+                    <ion-item>
+                      <button ion-button icon-only class="iconCol" *ngIf="settings" (click)="captureImage()">
+                        <ion-icon name="image"></ion-icon>
+                      </button>
+                    </ion-item>
+                    <button ion-button icon-only class="iconCol" *ngIf="!settings" (click)="settingsOn()">
+                      <ion-icon name="settings"></ion-icon>
+                    </button>
                   </div>
                 </ion-col>
                 <ion-col *ngIf="!settings">
@@ -49,8 +54,8 @@
                   <ion-input type="text" placeholder="Change name"></ion-input>
                   <ion-input type="email" placeholder="Change email"></ion-input>
                   <ion-input type="password" placeholder="Change password"></ion-input>
-                  <div class="buttonSave">
-                    <button ion-button type="submit">Save</button>
+                  <div>
+                    <button ion-button type="submit" class="buttonSave">Save</button>
                   </div>
                 </ion-col>
               </ion-row>
@@ -60,5 +65,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+
 </ion-content>
 

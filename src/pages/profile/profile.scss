@@ -4,8 +4,18 @@ page-profile {
   }
   .buttonSave {
     float: right;
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid #ffd56e;
   }
-  .buttonBlock {
-
+  .backBut {
+    background: transparent;
+    color: #33ccff;
+    margin: 0.1em 1em 0 0;
+  }
+  .iconCol {
+    background: transparent;
+    color: #33ccff;;
+    box-shadow: none;
   }
 }

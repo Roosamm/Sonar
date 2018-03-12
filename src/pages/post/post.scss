@@ -4,19 +4,15 @@ page-post {
   $button-wp-background-color-activated: 34 ADFB;
   $button-md-background-color-activated: 34 ADFB;
 
-  .style {
-    ion-item {
-      background: #33ccff;
-    }
-    background: #33ccff;
+  ion-card {
+    border: 3px solid #33ccff;
   }
 
   .postBtn {
+    position: relative;
+    float: right;
+    background: transparent;
     border-radius: 5px;
-    background: white;
-  }
-
-  .input {
-    color: white;
+    border: 2px solid #ffd56e;
   }
 }

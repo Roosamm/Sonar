@@ -5,16 +5,17 @@ page-register {
   $button-md-background-color-activated: 34 ADFB;
 
   .card {
-    ion-item {
-      background: #33ccff;
-    }
-    background: #33ccff;
+    border: 3px solid #33ccff;
   }
   .registerBut {
     border-radius: 5px;
     background: white;
+    border: 2px solid #ffd56e;
+    float: right;
   }
-  .input {
-    color: white;
+  .backBut {
+    background: transparent;
+    color: #33ccff;
+    margin: 0.1em 1em 0 0;
   }
 }

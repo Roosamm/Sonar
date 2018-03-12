@@ -1,7 +1,7 @@
 page-front {
 
   .columnEvents {
-    text-shadow: 2px 2px 2px #222222;
+    text-shadow: 2px 2px 2px black;
 
     ion-card {
       position: relative;
@@ -34,21 +34,28 @@ page-front {
 
   }
 
-
-  }
   .columnPosts {
     text-align: center;
+    border: 3px solid #33ccff;
     .card-header {
       font-size: 2em;
-      background: #33ccff;
     }
     .card-content {
       font-size: 1em;
-      background: #33ccff;
     }
 
   }
 
+  .joinBut {
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 0 0 1px black;
+    text-shadow: -0.2px -0.2px 0 black,
+    0.2px -0.2px 0 black,
+    -0.2px 0.2px 0 black,
+    0.2px 0.2px 0 black;
+  }
 
-
-
+}

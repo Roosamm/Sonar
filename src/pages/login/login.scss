@@ -1,5 +1,11 @@
 page-login {
   .welcome {
     justify-content: center;
+    text-align: center;
+  }
+  .button {
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid #ffd56e;
   }
 }
