@@ -122,15 +122,15 @@
                  <ion-card class="columnEvents">
                    <img [src]="mediaProvider.mediaUrl + (post.filename | thumbnail:'small')">
                    <div class="card-title"> {{post.title}}</div>
-                   <div class="card-subtitle"><b>Description: </b>{{post.description}}</div>
+                   <div class="card-subtitle"><b>Description: </b>{{post.description}}<br>
                    <!-- Two buttons that appear and disappear when user has the file in favourites-->
 
-                  <button ion-button (click)="addFavourite(post)" *ngIf="!isFavourite(post)">Like
+                  <button ion-button class="joinBut"  (click)="addFavourite(post)" *ngIf="!isFavourite(post)">Like
                     <!--<ion-badge>{{getAmountOfFavourites(post)}}</ion-badge>-->
                   </button>
-                  <button ion-button (click)="removeFavourite(post)" *ngIf="isFavourite(post)">Liked
+                  <button ion-button class="joinBut"  (click)="removeFavourite(post)" *ngIf="isFavourite(post)">Liked
                     <!--<ion-badge>{{getAmountOfFavourites(post)}}</ion-badge>-->
-                  </button>
+                  </button></div>
                 </ion-card>
               </ion-col>
             </ion-row>
