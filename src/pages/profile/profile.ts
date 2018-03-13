@@ -4,6 +4,7 @@ import {MediaProvider} from "../../providers/media/media";
 import {topBar} from "../../app/topBar";
 import {ShareProvider} from "../../providers/share/share";
 import {UploadPage} from "../upload/upload";
+import {User} from "../../app/models/user";
 
 @IonicPage()
 @Component({
@@ -23,6 +24,7 @@ export class ProfilePage {
   private favourites: Array<string>;
   private interests: Array<string>;
   public tb: topBar;
+  public pictureSource: string = "../../assets/img/new_user.png";
 
   private settings: boolean;
 
@@ -34,8 +36,20 @@ export class ProfilePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
+    if(this.shareService.fileID!=""){
+      this.mediaProvider.updateInfo(this.shareService.fileID,this.fullname,"Profile picture",localStorage.getItem('token')).subscribe(data =>{
+        this.mediaProvider.getSingleMedia(this.shareService.fileID).subscribe(data =>{
+          this.pictureSource = this.mediaProvider.mediaUrl + data['filename'];
+          this.shareService.fileID = "";
+        })
+      })
+    }
   }
-
+  user: User = {
+    username: '',
+    email: '',
+    password: '',
+  };
 
   getUserInformation(){
     this.mediaProvider.getUserData(localStorage.getItem('token')).subscribe(response =>{
@@ -58,6 +72,13 @@ export class ProfilePage {
         }
       });
     });
+  }
+
+  updateInfo(){
+    this.mediaProvider.updateUserInfo(this.user,localStorage.getItem('token')).subscribe( resp =>{
+      this.getUserInformation();
+      alert("User data updated");
+    })
   }
 
   public captureImage() {

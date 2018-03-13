@@ -33,7 +33,7 @@
               <ion-row>
                 <ion-col>
                   <!-- "split" Error here <ion-img  [src]="mediaProvider.mediaUrl+(profilePicFilename | thumbnail:'medium')"></ion-img> -->
-                  <img src="../../assets/img/new_user.png"/>
+                  <img src={{pictureSource}}/>
                   <div class="buttonBlock">
                     <ion-item>
                       <button ion-button icon-only class="iconCol" *ngIf="settings" (click)="captureImage()">
@@ -47,15 +47,17 @@
                 </ion-col>
                 <ion-col *ngIf="!settings">
                   <p><b>Email:</b> {{email}} </p>
+                  <!--
                   <p><b>Interests: </b> {{interests}} </p>
                   <p><b>Favourites: </b> {{favourites}} </p>
+                  -->
                 </ion-col>
                 <ion-col *ngIf="settings">
-                  <ion-input type="text" placeholder="Change name"></ion-input>
-                  <ion-input type="email" placeholder="Change email"></ion-input>
-                  <ion-input type="password" placeholder="Change password"></ion-input>
+                  <ion-input type="text" placeholder="Change username" [(ngModel)]="user.username"></ion-input>
+                  <ion-input type="email" placeholder="Change email" [(ngModel)]="user.email"></ion-input>
+                  <ion-input type="password" placeholder="Change password" [(ngModel)]="user.password"></ion-input>
                   <div>
-                    <button ion-button type="submit" class="buttonSave">Save</button>
+                    <button ion-button type="submit" class="buttonSave" (click)="updateInfo()">Save</button>
                   </div>
                 </ion-col>
               </ion-row>

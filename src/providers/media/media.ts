@@ -98,4 +98,11 @@ export class MediaProvider {
     };
     return this.http.delete(this.apiUrl+'/favourites/file/'+id, settings)
   }
+
+  updateUserInfo(user, token) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', token),
+    };
+    return this.http.put(this.apiUrl+'/users',user,settings)
+  }
 }

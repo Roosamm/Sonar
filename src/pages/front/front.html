@@ -98,35 +98,38 @@
                   <div class="card-title"> {{evt.title}}</div>
                   <div class="card-subtitle"><b>Description: </b>{{evt.description}} <br>
                   <!-- Two buttons that appear and disappear when user has the file in favourites-->
-                    <button ion-button class="joinBut" (click)="addFavourite(evt)" *ngIf="isFavourite(evt)">Join
-                      <ion-badge>( {{getAmountOfFavourites(evt)}} )</ion-badge>
-                  </button>
-                    <button ion-button class="joinBut" (click)="removeFavourite(evt)" *ngIf="!isFavourite(evt)">Joined
-                      <ion-badge>( {{getAmountOfFavourites(evt)}} )</ion-badge>
-                  </button>
-                  </div>
-                </ion-card>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-list>
 
-      <ion-list *ngSwitchCase="'News'">
-        <ion-col class="columnEvents" *ngFor="let post of shareService.postArray">
-          <ion-grid>
-            <ion-row>
-              <ion-col col-12 col-sm-6 offset-sm-3>
-                <ion-card class="columnEvents">
-                  <img [src]="mediaProvider.mediaUrl + (post.filename | thumbnail:'small')">
-                  <div class="card-title"> {{post.title}}</div>
-                  <div class="card-subtitle"><b>Description: </b>{{post.description}}</div>
-                  <!-- Two buttons that appear and disappear when user has the file in favourites-->
-                  <button ion-button (click)="addFavourite(evt)" *ngIf="isFavourite(evt)">Like
-                    <ion-badge>{{getAmountOfFavourites(evt)}}</ion-badge>
+                    <button ion-button class="joinBut" (click)="addFavourite(evt)" *ngIf="!isFavourite(evt)">Join
+                      <!--<ion-badge>( {{getAmountOfFavourites(evt)}} )</ion-badge>-->
+                   </button>
+                     <button ion-button class="joinBut" (click)="removeFavourite(evt)" *ngIf="isFavourite(evt)">Joined
+                       <!-- <ion-badge>( {{getAmountOfFavourites(evt)}} )</ion-badge>-->
+                    </button>
+
+                   </div>
+                 </ion-card>
+               </ion-col>
+             </ion-row>
+           </ion-grid>
+         </ion-col>
+       </ion-list>
+
+       <ion-list *ngSwitchCase="'News'">
+         <ion-col class="columnEvents" *ngFor="let post of shareService.postArray">
+           <ion-grid>
+             <ion-row>
+               <ion-col col-12 col-sm-6 offset-sm-3>
+                 <ion-card class="columnEvents">
+                   <img [src]="mediaProvider.mediaUrl + (post.filename | thumbnail:'small')">
+                   <div class="card-title"> {{post.title}}</div>
+                   <div class="card-subtitle"><b>Description: </b>{{post.description}}</div>
+                   <!-- Two buttons that appear and disappear when user has the file in favourites-->
+
+                  <button ion-button (click)="addFavourite(post)" *ngIf="!isFavourite(post)">Like
+                    <!--<ion-badge>{{getAmountOfFavourites(post)}}</ion-badge>-->
                   </button>
-                  <button ion-button (click)="removeFavourite(evt)" *ngIf="!isFavourite(evt)">Liked
-                    <ion-badge>{{getAmountOfFavourites(evt)}}</ion-badge>
+                  <button ion-button (click)="removeFavourite(post)" *ngIf="isFavourite(post)">Liked
+                    <!--<ion-badge>{{getAmountOfFavourites(post)}}</ion-badge>-->
                   </button>
                 </ion-card>
               </ion-col>

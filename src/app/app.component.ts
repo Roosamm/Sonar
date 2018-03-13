@@ -38,7 +38,8 @@ export class MyApp {
     this.userProfMenu = [
       {title: 'Profile', component: ProfilePage},
       {title: 'New post', component: PostPage},
-      {title: 'Settings', component: ProfilePage},
+     //  Same as Profile currently
+      // {title: 'Settings', component: ProfilePage},
       {title: 'Log out', component: LogoutPage},
     ];
 
