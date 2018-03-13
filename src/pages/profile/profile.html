@@ -4,7 +4,7 @@
       <button ion-button icon-only class="icon_menu" (click)="tb.openMenu('menuCategories')">
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title (click)="tb.redirectToFront()"><img class="logo" src="../../assets/img/New_LOGO.png"/></ion-title>
+      <ion-title (click)="tb.redirectToFront()"><img class="logo" src="./assets/img/New_LOGO.png"/></ion-title>
 
       <!-- When user is logged -->
       <div *ngIf="mediaProvider.logged">
@@ -33,7 +33,7 @@
               <ion-row>
                 <ion-col>
                   <!-- "split" Error here <ion-img  [src]="mediaProvider.mediaUrl+(profilePicFilename | thumbnail:'medium')"></ion-img> -->
-                  <img src={{pictureSource}}/>
+                  <img [src]=pictureSource>
                   <div class="buttonBlock">
                     <ion-item>
                       <button ion-button icon-only class="iconCol" *ngIf="settings" (click)="captureImage()">

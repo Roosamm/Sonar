@@ -24,7 +24,7 @@ export class ProfilePage {
   private favourites: Array<string>;
   private interests: Array<string>;
   public tb: topBar;
-  public pictureSource: string = "../../assets/img/new_user.png";
+  public pictureSource: string = "./assets/img/new_user.png";
 
   private settings: boolean;
 
@@ -36,14 +36,6 @@ export class ProfilePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
-    if(this.shareService.fileID!=""){
-      this.mediaProvider.updateInfo(this.shareService.fileID,this.fullname,"Profile picture",localStorage.getItem('token')).subscribe(data =>{
-        this.mediaProvider.getSingleMedia(this.shareService.fileID).subscribe(data =>{
-          this.pictureSource = this.mediaProvider.mediaUrl + data['filename'];
-          this.shareService.fileID = "";
-        })
-      })
-    }
   }
   user: User = {
     username: '',
@@ -91,6 +83,7 @@ export class ProfilePage {
       this.profilePicFileID = this.shareService.fileID;
       this.mediaProvider.getSingleMedia(this.profilePicFileID).subscribe(data =>{
         this.profilePicFilename = data['filename'];
+        this.pictureSource = this.mediaProvider.mediaUrl + this.profilePicFilename;
         this.mediaProvider.postTag("ProfilePic",token,this.profilePicFileID);
         this.shareService.fileID="";
       })
