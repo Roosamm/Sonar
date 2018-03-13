@@ -38,11 +38,9 @@ export class FrontPage {
     if(this.search!=null){
       this.tb.searchItems(this.search);
     }
-    /*
     if(this.mediaProvider.logged){
       this.getFavourites();
     }
-    */
   }
   getEventFeed(){
     this.mediaProvider.getMediaByTag("Sonar").subscribe(data =>{
