@@ -16,8 +16,8 @@ An additional fixture of this application is the editor of photos that is attach
 ![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_9.png)
 ![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_10.png)
 ![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_11.png)
-![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_12.jpg)
 ![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_13.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_12.jpg)
 
 ## Installation guide:
 
