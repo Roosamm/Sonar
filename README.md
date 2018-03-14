@@ -4,16 +4,19 @@ Sonar is a school project which aims to create an analogue of a social network w
 On the front page our seeking friends/adventure/rescue from loneliness user will find a list of events (which can be divided into categories by using the sidebar) to which he could join. The second tab of our user's home page is news other users shared. 
 The user can also share his own event / news and wait for someone to join/like him. 
 An additional fixture of this application is the editor of photos that is attached to the post.
-![Sonar](..\readmeResource\Screenshot_1.png) ![Sonar](..\readmeResource\Screenshot_2.png) ![Sonar](..\readmeResource\Screenshot_3.png) ![Sonar](..\readmeResource\Screenshot_4.png)
-![Sonar](..\readmeResource\Screenshot_5.png)
-![Sonar](..\readmeResource\Screenshot_6.png)
-![Sonar](..\readmeResource\Screenshot_7.png)
-![Sonar](..\readmeResource\Screenshot_8.png)
-![Sonar](..\readmeResource\Screenshot_9.png)
-![Sonar](..\readmeResource\Screenshot_10.png)
-![Sonar](..\readmeResource\Screenshot_11.png)
-![Sonar](..\readmeResource\Screenshot_12.png)
-![Sonar](..\readmeResource\Screenshot_13.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_1.png) 
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_2.png) 
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_3.png) 
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_4.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_5.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_6.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_7.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_8.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_9.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_10.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_11.png)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_12.jpg)
+![Sonar](https://github.com/Roosamm/Sonar/blob/master/readmeResource/Screenshot_13.png)
 
 ## Installation guide:
 
