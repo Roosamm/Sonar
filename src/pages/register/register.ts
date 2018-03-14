@@ -53,10 +53,12 @@ export class RegisterPage {
     */
     this.mediaProvider.register(this.user).subscribe(response => {
       console.log('registered');
-      this.navCtrl.setRoot(FrontPage);
-      this.mediaProvider.logged = true;
+      this.mediaProvider.login(this.user).subscribe(data=>{
+        this.navCtrl.setRoot(FrontPage);
+        this.mediaProvider.logged = true;
+      });
     }, (error: HttpErrorResponse) => {
-      console.log(error.error.message);
+      alert(error.error.message);
     });
   }
 
